@@ -21,22 +21,12 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.diamond = new MyDiamond(this);
-        this.triangle = new MyTriangle(this);
-        this.parallelogram = new MyParallelogram(this);
-        this.trianglesmall = new MyTriangleSmall(this);
-        this.trianglebig = new MyTriangleBig(this);
-        this.trianglebig2 = new MyTriangleBig(this);
-        this.trianglesmall2 = new MyTriangleSmall(this);
+        this.tangram = new MyTangram(this);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.scaleFactor = 1;
-        this.displayTriangle = false;
-        this.displayDiamond = false;
-        this.displayParallelogram = false;
-        this.displayTriangleSmall = false;
-        this.displayTriangleBig = false;
+        this.displayTangram = true;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -77,8 +67,11 @@ class MyScene extends CGFscene {
         this.multMatrix(sca);
         this.pushMatrix();
 
+        if(this.displayTangram)
+            this.tangram.display(this);
+
         // ---- Diamond Operations
-        var rot = [ Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0, 0,
+        /*var rot = [ Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0, 0,
                        -Math.sin(Math.PI/4), Math.cos(Math.PI/4), 0, 0,
                         0, 0, 1 , 0,
                         0, 0, 0, 1  ];
@@ -97,17 +90,13 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.translate(-1,1,0);
         this.rotate(Math.PI/2, 0, 0, 1);
-
-        if(this.displayTriangle)
-            this.triangle.display();
+    this.triangle.display();
 
         // ---- Parallelogram Operations
         this.popMatrix();
         this.pushMatrix();
         this.translate(-2, -0.8, 0);
         this.rotate(Math.PI, 0, 0, 1);
-        if(this.displayParallelogram)
-            this.parallelogram.display();
 
         // ---- Small Triangle Operations
         this.popMatrix();
@@ -115,17 +104,13 @@ class MyScene extends CGFscene {
         this.translate(Math.sqrt(2)/2, -Math.sqrt(2)/2, 0);
         this.rotate(-Math.PI/4, 0, 0, 1);
 
-        if(this.displayTriangleSmall)
-            this.trianglesmall.display();
-
         // ---- Big Triangle Operations
         this.popMatrix();
         this.pushMatrix();
         this.translate(-2, 0, 0);
         this.rotate(-Math.PI/2, 0, 0, 1);
 
-        if(this.displayTriangleBig)
-            this.trianglebig.display();
+        this.trianglebig.display();
 
         // ---- Big Triangle 2 Operations
         this.popMatrix();
@@ -138,7 +123,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
         this.pushMatrix();
         this.translate(-1.8, -2.8, 0);
-        this.trianglesmall2.display();
+        this.trianglesmall2.display();*/
 
         // ---- END Primitive drawing section
     }
