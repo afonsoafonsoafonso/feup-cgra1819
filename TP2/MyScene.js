@@ -69,6 +69,9 @@ class MyScene extends CGFscene {
         this.multMatrix(sca);
         this.pushMatrix();
 
+        this.translate(5.1,0,2.1);
+        this.rotate(-Math.PI/2,1,0,0);
+
         if(this.displayTangram) {
             this.pushMatrix();   
             this.tangram.display(this);

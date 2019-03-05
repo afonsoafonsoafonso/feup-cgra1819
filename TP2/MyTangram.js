@@ -17,6 +17,7 @@ class MyTangram extends CGFobject {
     }
 
     display(scene) {
+        scene.pushMatrix();
         // ---- Diamond Operations
         var rot = [ Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0, 0,
                        -Math.sin(Math.PI/4), Math.cos(Math.PI/4), 0, 0,
