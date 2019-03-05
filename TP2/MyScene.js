@@ -22,11 +22,13 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.tangram = new MyTangram(this);
+        this.cube = new MyUnitCube(this);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.scaleFactor = 1;
         this.displayTangram = true;
+        this.displayCube = true;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -67,64 +69,16 @@ class MyScene extends CGFscene {
         this.multMatrix(sca);
         this.pushMatrix();
 
-        if(this.displayTangram)
+        if(this.displayTangram) {
+            this.pushMatrix();   
             this.tangram.display(this);
+        }
 
-        // ---- Diamond Operations
-        /*var rot = [ Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0, 0,
-                       -Math.sin(Math.PI/4), Math.cos(Math.PI/4), 0, 0,
-                        0, 0, 1 , 0,
-                        0, 0, 0, 1  ];
-        var trans = [1, 0, 0, 0,
-                     0, 1, 0, 0,
-                     0, 0, 1, 0,
-                     Math.sqrt(2)/2, Math.sqrt(2)/2, 0, 1 ];
-        this.multMatrix(trans);
-        this.multMatrix(rot);
-       
-        if(this.displayDiamond)
-            this.diamond.display();
-
-        // ---- Triangle Operations
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(-1,1,0);
-        this.rotate(Math.PI/2, 0, 0, 1);
-    this.triangle.display();
-
-        // ---- Parallelogram Operations
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(-2, -0.8, 0);
-        this.rotate(Math.PI, 0, 0, 1);
-
-        // ---- Small Triangle Operations
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(Math.sqrt(2)/2, -Math.sqrt(2)/2, 0);
-        this.rotate(-Math.PI/4, 0, 0, 1);
-
-        // ---- Big Triangle Operations
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(-2, 0, 0);
-        this.rotate(-Math.PI/2, 0, 0, 1);
-
-        this.trianglebig.display();
-
-        // ---- Big Triangle 2 Operations
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(-3.4, 0.6, 0);
-        this.rotate(-3*Math.PI/4, 0, 0, 1);
-        this.trianglebig2.display();
-
-        // ---- Small Triangle 2 Operations
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(-1.8, -2.8, 0);
-        this.trianglesmall2.display();*/
-
-        // ---- END Primitive drawing section
+        if(this.displayCube) {
+            this.pushMatrix();
+            this.translate(-1.8,-0.4,-0.35);
+            this.scale(6.6,5,1/3);
+            this.cube.display(this);
+        }
     }
 }
