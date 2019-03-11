@@ -14,10 +14,11 @@ class MyTangram extends CGFobject {
     this.trianglebig = new MyTriangleBig(scene);
     this.trianglebig2 = new MyTriangleBig(scene);
     this.trianglesmall2 = new MyTriangleSmall(scene);
+    this.scene = scene;
     }
 
-    display(scene) {
-        scene.pushMatrix();
+    display() {
+        this.scene.pushMatrix();
         // ---- Diamond Operations
         var rot = [ Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0, 0,
                        -Math.sin(Math.PI/4), Math.cos(Math.PI/4), 0, 0,
@@ -27,52 +28,52 @@ class MyTangram extends CGFobject {
                      0, 1, 0, 0,
                      0, 0, 1, 0,
                      Math.sqrt(2)/2, Math.sqrt(2)/2, 0, 1 ];
-        scene.multMatrix(trans);
-        scene.multMatrix(rot); 
+        this.scene.multMatrix(trans);
+        this.scene.multMatrix(rot); 
         this.diamond.display();
 
         // ---- Triangle Operations
-        scene.popMatrix();
-        scene.pushMatrix();
-        scene.translate(-1,1,0);
-        scene.rotate(Math.PI/2, 0, 0, 1);
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(-1,1,0);
+        this.scene.rotate(Math.PI/2, 0, 0, 1);
         this.triangle.display();
 
         // ---- Parallelogram Operations
-        scene.popMatrix();
-        scene.pushMatrix();
-        scene.translate(-2, -0.8, 0);
-        scene.rotate(Math.PI, 0, 0, 1);
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(-2, -0.8, 0);
+        this.scene.rotate(Math.PI, 0, 0, 1);
         this.parallelogram.display();
 
         // ---- Small Triangle Operations
-        scene.popMatrix();
-        scene.pushMatrix();
-        scene.translate(Math.sqrt(2)/2, -Math.sqrt(2)/2, 0);
-        scene.rotate(-Math.PI/4, 0, 0, 1);
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(Math.sqrt(2)/2, -Math.sqrt(2)/2, 0);
+        this.scene.rotate(-Math.PI/4, 0, 0, 1);
         this.trianglesmall.display();
 
         // ---- Big Triangle Operations
-        scene.popMatrix();
-        scene.pushMatrix();
-        scene.translate(-2, 0, 0);
-        scene.rotate(-Math.PI/2, 0, 0, 1);
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(-2, 0, 0);
+        this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.trianglebig.display();
 
         // ---- Big Triangle 2 Operations
-        scene.popMatrix();
-        scene.pushMatrix();
-        scene.translate(-3.4, 0.6, 0);
-        scene.rotate(-3*Math.PI/4, 0, 0, 1);
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(-3.4, 0.6, 0);
+        this.scene.rotate(-3*Math.PI/4, 0, 0, 1);
         this.trianglebig2.display();
 
         // ---- Small Triangle 2 Operations
-        scene.popMatrix();
-        scene.pushMatrix();
-        scene.translate(-1.8, -2.8, 0);
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(-1.8, -2.8, 0);
         this.trianglesmall2.display();
 
-        scene.popMatrix();
+        this.scene.popMatrix();
     }
 
 }
