@@ -125,9 +125,9 @@ class MyScene extends CGFscene {
 
         // Wood
         this.wood = new CGFappearance(this);
-        this.wood.setAmbient(160/255, 102/255, 1/255, 1.0);
-        this.wood.setDiffuse(160/255, 102/255, 1/255, 1.0);
-        this.wood.setSpecular(160/255, 102/255, 1/255, 0.2);
+        this.wood.setAmbient(24/255, 16/255, 8/255, 1.0);
+        this.wood.setDiffuse(43/255, 29/255, 14/255, 1.0);
+        this.wood.setSpecular(62/255, 43/255, 20/255, 0.2);
         this.wood.setShininess(10.0);
 
         // Custom material (can be changed in the interface)
@@ -172,7 +172,7 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
-        
+            
         if (this.displayNormals)
             this.objects[this.selectedObject].enableNormalViz();
         else

@@ -24,12 +24,12 @@ class MyTriangle extends CGFobject {
 		];
 
 		this.normals = [
-			0, 0, -1, //0
-			0, 0, -1, //1
-			0, 0, -1, //2
-			0, 0, -1, //0
-			0, 0, -1, //1
-			0, 0, -1, //2
+			0, 0, 1, //0
+			0, 0, 1, //1
+			0, 0, 1, //2
+			0, 0, 1, //0
+			0, 0, 1, //1
+			0, 0, 1, //2
 		]
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
