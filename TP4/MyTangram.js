@@ -55,6 +55,7 @@ class MyTangram extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(-2, -0.8, 0);
         this.scene.rotate(Math.PI, 0, 0, 1);
+        this.material.apply();
         this.parallelogram.display();
 
         // ---- Small Triangle Operations
