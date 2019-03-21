@@ -13,13 +13,19 @@ class MyDiamond extends CGFobject {
 			-1, 0, 0,	//0
 			0, -1, 0,	//1
 			0, 1, 0,	//2
-			1, 0, 0		//3
+			1, 0, 0,	//3
+			-1, 0, 0,	//0 4
+			0, -1, 0,	//1 5
+			0, 1, 0,	//2 6
+			1, 0, 0		//3 7
 		];
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
 			0, 1, 2,
-			1, 3, 2
+			1, 3, 2,
+			4, 6, 5,
+			5, 6, 7
 		];
 
 		this.normals = [
@@ -27,9 +33,17 @@ class MyDiamond extends CGFobject {
 			0, 0, 1,
 			0, 0, 1,
 			0, 0, 1,
+			0, 0, -1,
+			0, 0, -1,
+			0, 0, -1,
+			0, 0, -1
 		]
 
 		this.texCoords = [
+			0, 0.5,
+			0.25, 0.25,
+			0.25,0.75,
+			0.5, 0.5,
 			0, 0.5,
 			0.25, 0.25,
 			0.25,0.75,
