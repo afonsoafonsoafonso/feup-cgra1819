@@ -1,13 +1,12 @@
 /**
- * MyPrism
+ * MyCylinder
  * @constructor
  * @param Scene - Reference to MyScene object
  */
-class MyPrism extends CGFobject {
+class MyCylinder extends CGFobject {
     constructor(scene, slices) {
         super(scene);
         this.slices = slices;
-        //
         this.initBuffers();
     }
 
@@ -26,14 +25,6 @@ class MyPrism extends CGFobject {
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
             this.vertices.push(Math.cos(ang), 1, -Math.sin(ang));
         }
-        //declaring bottom vertices2
-        for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.vertices.push(Math.cos(ang), 0, -Math.sin(ang)); 
-        }
-        //declaring upper vertices2
-        for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.vertices.push(Math.cos(ang), 1, -Math.sin(ang));
-        }
         //declaring indices
         for(var i=0; i<this.slices; i++) {
             if(i==this.slices-1) {
@@ -45,22 +36,15 @@ class MyPrism extends CGFobject {
                 this.indices.push(i, i+this.slices+1, i+this.slices);
             }
         }
-        //declaring bottom normals
+        //declaring lower normals
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.normals.push(Math.cos(ang+alphaAng/2), 0, -Math.sin(ang+alphaAng/2));
+            this.normals.push(Math.cos(ang), 0, -Math.sin(ang));
         }
-        //declaring top normals
+        //declaring upper normals
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.normals.push(Math.cos(ang+alphaAng/2), 0, -Math.sin(ang+alphaAng/2));
+            this.normals.push(Math.cos(ang), 0, -Math.sin(ang));
         }
-        //declaring bottom normals 2
-        for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.normals.push(Math.cos(ang-alphaAng/2), 0, -Math.sin(ang-alphaAng/2));
-        }
-        //declaring top normals 2
-        for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.normals.push(Math.cos(ang-alphaAng/2), 0, -Math.sin(ang-alphaAng/2));
-        }
+        //declaring texture coordenates
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
