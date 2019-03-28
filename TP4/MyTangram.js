@@ -73,6 +73,9 @@ class MyTangram extends CGFobject {
         var textCoords = [
 			1, 0, 
 			0, 0,
+            0.5, 0.5,
+            1, 0, 
+			0, 0,
 			0.5, 0.5
         ]
         this.trianglebig.updateTexCoords(textCoords);
@@ -86,7 +89,10 @@ class MyTangram extends CGFobject {
         textCoords = [
             0.5, 0.5,
             1, 0,
-            1 ,1
+            1 ,1,
+            0.5, 0.5,
+            1, 0,
+            1 ,1,
         ];
         this.trianglebig2.updateTexCoords(textCoords);
         this.trianglebig2.display();
