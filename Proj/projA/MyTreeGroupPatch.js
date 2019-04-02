@@ -9,11 +9,11 @@ class MyTreeGroupPatch extends CGFobject {
         this.trees = [];
         this.disalignment_factor = [];
         for(var i=0; i<9; i++) {
-            this.disalignment_factor.push(Math.random()*2-1);
+            this.disalignment_factor.push(Math.random()*1.5-1);
         }
         var scale_factor;
         for(var i = 0; i<9; i++) {
-            scale_factor = Math.random()*0.6 + 0.7;
+            scale_factor = Math.random()*0.4 + 0.8;
             this.trees.push(new MyTree(this.scene,3*scale_factor,1*scale_factor,4.5*scale_factor,3*scale_factor));
 
         }
