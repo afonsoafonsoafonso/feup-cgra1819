@@ -19,6 +19,7 @@ class MyTreeGroupPatch extends CGFobject {
         }
 
     }
+    
     display() {
         var t=0;
 
