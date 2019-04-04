@@ -7,7 +7,7 @@ class MyVoxelHill extends CGFobject {
     constructor(scene, height) {
         super(scene);
         this.cubes = [];
-        for(var i=1; i<=height, i++) {
+        for(var i=1; i<=height; i++) {
             //cubo no topo da piramide
             if(i==1)
                 this.cubes.push(new MyUnitCubeQuad(scene));

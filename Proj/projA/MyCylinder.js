@@ -14,6 +14,7 @@ class MyCylinder extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+       // this.texCoords = [];
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
@@ -46,6 +47,14 @@ class MyCylinder extends CGFobject {
         }
         //declaring texture coordenates
 
+       /* for(var i=0; i<this.slices;i++)
+            this.texCoords.push(
+                i/this.slices,0,
+                (i+1)/this.slices,0,
+                i/this.slices,1,
+                (i+1)/this.slices,1
+            );        
+*/
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }

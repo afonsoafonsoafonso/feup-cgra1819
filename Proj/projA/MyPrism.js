@@ -7,7 +7,7 @@ class MyPrism extends CGFobject {
     constructor(scene, slices) {
         super(scene);
         this.slices = slices;
-        //
+
         this.initBuffers();
     }
 
@@ -15,6 +15,7 @@ class MyPrism extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.textCoords = [];
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
@@ -44,6 +45,11 @@ class MyPrism extends CGFobject {
                 this.indices.push(i, i+1, i+this.slices+1);
                 this.indices.push(i, i+this.slices+1, i+this.slices);
             }
+        
+            this.textCoords.push(0, 1,
+                                1, 1,
+                                0, 0,
+                                1, 0,); 
         }
         //declaring bottom normals
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
@@ -61,6 +67,7 @@ class MyPrism extends CGFobject {
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
             this.normals.push(Math.cos(ang-alphaAng/2), 0, -Math.sin(ang-alphaAng/2));
         }
+
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();

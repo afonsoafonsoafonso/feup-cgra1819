@@ -34,6 +34,3 @@ class MyTreeGroupPatch extends CGFobject {
         }
     }
 }
-
-
-//Math.floor(Math.random() * 11 ); 
