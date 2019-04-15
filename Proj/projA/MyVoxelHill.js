@@ -6,29 +6,48 @@
 class MyVoxelHill extends CGFobject {
     constructor(scene, height) {
         super(scene);
-        this.cubes = [];
-        for(var i=1; i<=height; i++) {
-            //cubo no topo da piramide
-            if(i==1)
-                this.cubes.push(new MyUnitCubeQuad(scene));
-            //cubos imediatamente abaixo do topo
-            else if(i==1) {
-                for(var j=0; j<8; i++) {
-                    this.cubes.push(new MyUnitCubeQuad(scene));
-                }
-            }
-            //caso generalizado para tudo abaixo dos dois
-            //patamares superiores
-            else {
-                for(var j=0; j<(i*4+4); j++) {
-                    this.cubes.push(new MyUnitCubeQuad(scene));
-                }
-            }
-        }
+        this.cube = new MyUnitCubeQuad(scene);
+        this.height = height;
     }
 
     display() {
-        this.scene.pushMatrix();
-
+        //iX: posição inical em X do 1º cubo
+        //iY: idem para Y
+        //iZ: idem para Z
+        //cX: current X position
+        //cY: current Y position
+        //cZ: current Z position
+        //nSide: number of cubes per side
+        var iX = 0, iZ = 0, cY = this.height, cX, cZ, dX, dZ, nSide=0;
+        for(var i=0; i<this.height; i++, iX--, iZ--, cY--,nSide+=2) {
+            if(i==0) {
+                this.scene.pushMatrix();
+                this.scene.translate(0,this.height,0);
+                this.cube.display();
+                this.scene.popMatrix();
+            }
+            else if(i==1) {
+                for(var j=0, cZ=iZ, cX=iX, dX=1, dZ=0; j<8; j++, cX+=dX, cZ+=dZ) {
+                    if(cX==1 && cZ==-1) {dX=0; dZ=1;}
+                    else if(cX==1 && cZ==1) {dX=-1; dZ=0}
+                    else if(cX==-1 && cZ==1) {dX=0; dZ=-1;}
+                    this.scene.pushMatrix();
+                    this.scene.translate(cX,cY,cZ);
+                    this.cube.display();
+                    this.scene.popMatrix();
+                }               
+            }
+            else {
+                for(var j=0, cZ=iZ, cX=iX, dX=1, dZ=0; j<(nSide*4); j++, cX+=dX, cZ+=dZ) {
+                    if(cX==iX+nSide && cZ==iZ) {dX=0; dZ=1;}
+                    if(cX==iX+nSide && cZ==iZ+nSide) {dX=-1; dZ=0}
+                    if(cX==iX && cZ==iZ+nSide) {dX=0; dZ=-1;};
+                    this.scene.pushMatrix();
+                    this.scene.translate(cX,cY,cZ);
+                    this.cube.display();
+                    this.scene.popMatrix();
+                }
+            }
+        }
     }
 }
