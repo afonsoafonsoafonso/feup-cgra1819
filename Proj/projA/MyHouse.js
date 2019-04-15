@@ -8,7 +8,7 @@ class MyHouse extends CGFobject {
         super(scene);
         this.cube = new MyUnitCubeQuad(scene);
         this.pyr = new MyPyramid(scene,4,2);
-        this.MyPrism = new MyPrism(scene,6);
+        this.prism = new MyPrism(scene,5);
 
         this.materialRoof = new CGFappearance(scene);
         this.materialRoof.setAmbient(0.1, 0.1, 0.1, 1);
@@ -31,7 +31,7 @@ class MyHouse extends CGFobject {
         this.materialPillar.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialPillar.setSpecular(0.1, 0.1, 0.1, 1);
         this.materialPillar.setShininess(10.0);
-        this.materialPillar.loadTexture('tex/wall2.jpg');
+        this.materialPillar.loadTexture('tex/pillar.jpg');
         this.materialPillar.setTextureWrap('REPEAT', 'REPEAT');
     }
     display() {
@@ -41,6 +41,7 @@ class MyHouse extends CGFobject {
         this.materialWoodWall.apply();
         this.cube.display();
         this.scene.popMatrix();
+
         //pyramid (roof) operations
         this.scene.pushMatrix();
         this.scene.translate(0,1,0);
@@ -49,20 +50,21 @@ class MyHouse extends CGFobject {
         this.materialRoof.apply();
         this.pyr.display();
         this.scene.popMatrix();
+
         //prysm2 (collumns/pillars) operations
         this.scene.pushMatrix();
         this.scene.translate(2,-1,0);
         this.scene.scale(0.2,2,0.2);
         this.scene.translate(-3.5,0,5.5);
         this.materialPillar.apply();
-        this.MyPrism.display();
+        this.prism.display();
         this.scene.popMatrix();
         //prysm1 "    "    "     "    "    "
         this.scene.pushMatrix();
         this.scene.translate(2,-1,0);
         this.scene.scale(0.2,2,0.2);
         this.scene.translate(-3.5,0,-5.5);
-        this.MyPrism.display();
+        this.prism.display();
         this.scene.popMatrix();
     }
 }

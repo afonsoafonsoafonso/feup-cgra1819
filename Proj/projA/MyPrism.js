@@ -15,13 +15,13 @@ class MyPrism extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
-        this.textCoords = [];
+        this.texCoords = [];
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
         //declaring bottom vertices
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.vertices.push(Math.cos(ang), 0, -Math.sin(ang)); 
+            this.vertices.push(Math.cos(ang), 0, -Math.sin(ang));
         }
         //declaring top vertices
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
@@ -29,7 +29,7 @@ class MyPrism extends CGFobject {
         }
         //declaring bottom vertices2
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
-            this.vertices.push(Math.cos(ang), 0, -Math.sin(ang)); 
+            this.vertices.push(Math.cos(ang), 0, -Math.sin(ang));
         }
         //declaring upper vertices2
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
@@ -46,10 +46,10 @@ class MyPrism extends CGFobject {
                 this.indices.push(i, i+this.slices+1, i+this.slices);
             }
         
-            this.textCoords.push(0, 1,
-                                1, 1,
-                                0, 0,
-                                1, 0,); 
+            this.texCoords.push(0, 0,
+                                1, 0,
+                                0, 1,
+                                1, 0);
         }
         //declaring bottom normals
         for(var i=0, ang=0; i<this.slices; i++, ang+=alphaAng) {
