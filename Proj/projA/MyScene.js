@@ -28,6 +28,7 @@ class MyScene extends CGFscene {
         this.hill2 = new MyVoxelHill(this,7);
         this.treeRow = new MyTreeRowPatch(this);
         this.treeGroup = new MyTreeGroupPatch(this);
+        this.cubeMap = new MyCubeMap(this);
         /*this.prism = new MyPrism(this,5);
         this.cylinder = new MyCylinder(this,30);
         this.cone = new MyCone(this,10,10);
@@ -123,6 +124,11 @@ class MyScene extends CGFscene {
         this.translate(-14,0,8.3);
         this.treeGroup.display();
         this.popMatrix();
+
+
+        // CubeMap
+        this.pushMatrix();
+        this.cubeMap.display();
         //this.cylinder.display();
         //this.prism.display();
         //this.cone.display();

@@ -48,11 +48,7 @@ class MyCylinder extends CGFobject {
         //declaring texture coordenates
 
         for(var i=0; i<this.slices;i++)
-            this.texCoords.push(/*
-                i/this.slices,0,
-                (i+1)/this.slices,0,
-                i/this.slices,1,
-                (i+1)/this.slices,1*/
+            this.texCoords.push(
                 0,1,
                 1,1,
                 0,0,
