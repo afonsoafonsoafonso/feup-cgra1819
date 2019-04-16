@@ -22,7 +22,7 @@ class MyVoxelHill extends CGFobject {
         for(var i=0; i<this.height; i++, iX--, iZ--, cY--,nSide+=2) {
             if(i==0) {
                 this.scene.pushMatrix();
-                this.scene.translate(0,this.height,0);
+                this.scene.translate(0,this.height-0.5,0);
                 this.cube.display();
                 this.scene.popMatrix();
             }
@@ -32,7 +32,7 @@ class MyVoxelHill extends CGFobject {
                     else if(cX==1 && cZ==1) {dX=-1; dZ=0}
                     else if(cX==-1 && cZ==1) {dX=0; dZ=-1;}
                     this.scene.pushMatrix();
-                    this.scene.translate(cX,cY,cZ);
+                    this.scene.translate(cX,cY-0.5,cZ);
                     this.cube.display();
                     this.scene.popMatrix();
                 }               
@@ -43,7 +43,7 @@ class MyVoxelHill extends CGFobject {
                     if(cX==iX+nSide && cZ==iZ+nSide) {dX=-1; dZ=0}
                     if(cX==iX && cZ==iZ+nSide) {dX=0; dZ=-1;};
                     this.scene.pushMatrix();
-                    this.scene.translate(cX,cY,cZ);
+                    this.scene.translate(cX,cY-0.5,cZ);
                     this.cube.display();
                     this.scene.popMatrix();
                 }

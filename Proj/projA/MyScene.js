@@ -22,13 +22,19 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.prism = new MyPrism(this,5);
+        this.plane = new MyQuad(this);
+        this.house = new MyHouse(this);
+        this.hill1 = new MyVoxelHill(this,4);
+        this.hill2 = new MyVoxelHill(this,7);
+        this.treeRow = new MyTreeRowPatch(this);
+        this.treeGroup = new MyTreeGroupPatch(this);
+        /*this.prism = new MyPrism(this,5);
         this.cylinder = new MyCylinder(this,30);
         this.cone = new MyCone(this,10,10);
         this.tree = new MyTree(this,3,2,2,3);
         this.treePatch = new MyTreeGroupPatch(this);
         this.house = new MyHouse(this);
-        this.treeRow = new MyTreeRowPatch(this);
+        this.treeRow = new MyTreeRowPatch(this);*/
 
         //Objects connected to MyInterface
     }
@@ -64,7 +70,59 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        // ---- BEGIN Primitive drawing section        
+        // ---- BEGIN Primitive drawing section
+        
+        //drawing plane / grass field / base of rest of scene
+        this.pushMatrix();
+        this.scale(60,60,60);
+        this.rotate(-Math.PI/2,1,0,0);
+        this.plane.display();
+        this.popMatrix();
+        
+        //drawing house in center of scene
+        this.pushMatrix();
+        this.translate(0,1,0);
+        this.house.display();
+        this.popMatrix();
+
+        //drawing maller hill
+        this.pushMatrix();
+        this.translate(-10,0,-6);
+        this.hill1.display();
+        this.popMatrix();
+
+        //drawing bigger hill
+        this.pushMatrix();
+        this.translate(-8,0,-22);
+        this.hill2.display();
+        this.popMatrix();
+
+        //drawing tree rows
+        this.pushMatrix();
+        this.translate(-8,0,-13);
+        this.rotate(Math.PI/2,0,1,0);
+        this.scale(0.6,0.6,0.6);
+        this.treeRow.display();
+        this.popMatrix();
+        //
+        this.pushMatrix();
+        this.translate(-4,0,6.5);
+        this.scale(0.6,0.6,0.6);
+        this.treeRow.display();
+        this.popMatrix();
+
+        //making tree patches
+        this.pushMatrix();
+        this.translate(0.3,0,-5);
+        this.scale(0.6,0.6,0.6);
+        this.treeGroup.display();
+        this.popMatrix();
+        //
+        this.pushMatrix();
+        this.scale(0.6,0.6,0.6);
+        this.translate(-14,0,8.3);
+        this.treeGroup.display();
+        this.popMatrix();
         //this.cylinder.display();
         //this.prism.display();
         //this.cone.display();
@@ -72,7 +130,7 @@ class MyScene extends CGFscene {
         //this.tree.display();
         //this.treePatch.display();
         //this.house.display();
-        this.treeRow.display();
+        //this.treeRow.display();
         
         // ---- END Primitive drawing section
     }
