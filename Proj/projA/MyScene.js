@@ -23,7 +23,7 @@ class MyScene extends CGFscene {
         this.materialLake.setAmbient(0.1, 0.1, 0.1, 1);
         this.materialLake.setSpecular(4, 4, 4, 4);
         this.materialLake.setDiffuse(0.7, 0.7, 0.7, 1);
-        this.materialLake.setShininess(6);
+        this.materialLake.setShininess(8);
         this.materialLake.loadTexture('tex/water.jpeg');
         this.materialLake.setTextureWrap('REPEAT','REPEAT');
 
@@ -70,6 +70,7 @@ class MyScene extends CGFscene {
         //sunlight
         this.lights[0].setPosition(10, 15, 10, 1);
         this.lights[0].setDiffuse(255/255*0.8, 221/255*0.8 , 204/255*0.8 , 1.0);
+        this.lights[0].setSpecular(255/255*0.8, 221/255*0.8 , 204/255*0.8 , 1.0);
         this.lights[0].setVisible(true);
         this.lights[0].constant_attenuation = 0.2; 
         this.lights[0].disable();
@@ -77,6 +78,7 @@ class MyScene extends CGFscene {
         //moonlight
         this.lights[1].setPosition(10,15,10,1);
         this.lights[1].setDiffuse(212/255 *0.4, 235/255 *0.4, 255/255 *0.4, 1.0);
+        this.lights[1].setSpecular(212/255 *0.4, 235/255 *0.4, 255/255 *0.4, 1.0);
         this.lights[1].setVisible(true);
         this.lights[1].constant_attenuation=0.1;
         this.lights[1].linear_attenuation = 0.05;
