@@ -20,12 +20,27 @@ class MyScene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
         this.enableTextures(true);
 
+
+
+        this.materialDown = new CGFappearance(this);
+        this.materialDown.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialDown.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialDown.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialDown.setShininess(100.0);
+        this.materialDown.loadTexture('tex/grass.jpg')
+        this.materialDown.setTextureWrap('REPEAT', 'REPEAT');
+    
+        this.plane_coords = [0,50,
+                            50,50,
+                            0,0,
+                            50,0];
+
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.plane = new MyQuad(this);
+        this.plane = new MyQuad(this,this.plane_coords);
         this.house = new MyHouse(this);
         this.hill1 = new MyVoxelHill(this,4);
-        this.hill2 = new MyVoxelHill(this,7);
+        this.hill2 = new MyVoxelHill(this,3);
         this.treeRow = new MyTreeRowPatch(this);
         this.treeGroup = new MyTreeGroupPatch(this);
         this.cubeMap = new MyCubeMap(this);
@@ -73,12 +88,6 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
         
-        //drawing plane / grass field / base of rest of scene
-        this.pushMatrix();
-        this.scale(60,60,60);
-        this.rotate(-Math.PI/2,1,0,0);
-        this.plane.display();
-        this.popMatrix();
         
         //drawing house in center of scene
         this.pushMatrix();
@@ -137,6 +146,14 @@ class MyScene extends CGFscene {
         //this.treePatch.display();
         //this.house.display();
         //this.treeRow.display();
+        
+        //drawing plane / grass field / base of rest of scene
+        this.pushMatrix();
+        this.scale(60,60,60);
+        this.rotate(-Math.PI/2,1,0,0);
+        this.materialDown.apply();
+        this.plane.display();
+        this.popMatrix();
         
         // ---- END Primitive drawing section
     }

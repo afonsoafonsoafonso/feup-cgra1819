@@ -46,21 +46,12 @@ class MyCubeMap extends CGFobject {
     this.materialUp.setShininess(10.0);
     this.materialUp.loadTexture('tex/up.JPG')
     this.materialUp.setTextureWrap('REPEAT', 'REPEAT');
-
-    this.materialDown = new CGFappearance(scene);
-    this.materialDown.setAmbient(0.1, 0.1, 0.1, 1);
-    this.materialDown.setDiffuse(0.9, 0.9, 0.9, 1);
-    this.materialDown.setSpecular(0.1, 0.1, 0.1, 1);
-    this.materialDown.setShininess(10.0);
-    this.materialDown.loadTexture('tex/down.JPG')
-    this.materialDown.setTextureWrap('REPEAT', 'REPEAT');
+        
     }
 
     display() {
         
-        //this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST); 
         this.scene.pushMatrix();
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST); 
         this.scene.scale(60,60,60);
         this.scene.translate(0,0.5,0);
 
@@ -98,14 +89,14 @@ class MyCubeMap extends CGFobject {
         this.side.display();
 
          // ---- Top Operations
-
+        /*
          this.scene.popMatrix();
          this.scene.pushMatrix();
          this.scene.rotate(Math.PI,0,1,1);
          this.scene.translate(0,0,-0.5);
          this.materialDown.apply();
-         this.side.display();
-
+         this.side.display();*/
+        
          this.scene.popMatrix();
          this.scene.pushMatrix();
          this.scene.rotate(Math.PI,0,1,-1);
