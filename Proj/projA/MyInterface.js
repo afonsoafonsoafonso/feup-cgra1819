@@ -22,6 +22,8 @@ class MyInterface extends CGFinterface {
 
         this.gui.add(this.scene, 'bonfire').name("Bonfire");
 
+        this.gui.add(this.scene, 'textures').name("Textures");
+
         return true;
     }
 }

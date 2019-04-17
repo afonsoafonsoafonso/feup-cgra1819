@@ -18,7 +18,7 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
-        this.enableTextures(true);
+        
 
 
 
@@ -26,7 +26,7 @@ class MyScene extends CGFscene {
         this.materialDown.setAmbient(0.1, 0.1, 0.1, 1);
         this.materialDown.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialDown.setSpecular(0.1, 0.1, 0.1, 1);
-        this.materialDown.setShininess(100.0);
+        this.materialDown.setShininess(10.0);
         this.materialDown.loadTexture('tex/grass.jpg')
         this.materialDown.setTextureWrap('REPEAT', 'REPEAT');
     
@@ -58,6 +58,8 @@ class MyScene extends CGFscene {
         this.dayTimeMode = 0;
         this.dayTimeModes = {'Day': 0, 'Night': 1};
         this.bonfire = false;
+        this.textures = true;
+        
     }
     initLights() {
         //sunlight
@@ -124,10 +126,13 @@ class MyScene extends CGFscene {
             this.lights[0].disable();
             this.lights[1].enable();
         }
+        this.cubeMap.setDayTimeMode(this.dayTimeMode);
 
         if(this.bonfire==true) this.lights[2].enable();
         else this.lights[2].disable();
 
+        if (this.textures == true) this.enableTextures(true);
+        else this.enableTextures(false);
 
         // ---- BEGIN Primitive drawing section
         
