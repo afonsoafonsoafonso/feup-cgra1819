@@ -45,8 +45,12 @@ class MyScene extends CGFscene {
         this.bonfire = false;
     }
     initLights() {
-        this.lights[0].setPosition(15, 2, 5, 1);
-        this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
+        this.lights[0].setPosition(10, 15, 10, 1);
+        this.lights[0].setDiffuse(114.5/255 *3.5, 105.5/255 * 3.5, 84.3/255 * 3.5, 1.0);
+        this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);
+        this.lights[0].setVisible(true);
+        this.lights[0].constant_attenuation = 1.0; 
+        //this.lights[0].setAmbient(1.0, 1.0, 1.0, 10);
         this.lights[0].enable();
         this.lights[0].update();
     }
