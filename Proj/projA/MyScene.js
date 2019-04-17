@@ -55,34 +55,35 @@ class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
-        this.dayMode = true;
-        this.nightMode = false;
+        this.dayTimeMode = 0;
+        this.dayTimeModes = {'Day': 0, 'Night': 1};
         this.bonfire = false;
     }
     initLights() {
         //sunlight
         this.lights[0].setPosition(10, 15, 10, 1);
-        this.lights[0].setDiffuse(255/255, 241/255 , 224/255 , 1.0);
+        this.lights[0].setDiffuse(255/255*0.8, 221/255*0.8 , 204/255*0.8 , 1.0);
         this.lights[0].setVisible(true);
-        this.lights[0].constant_attenuation = 0.1; 
-        //this.lights[0].enable();
+        this.lights[0].constant_attenuation = 0.2; 
+        this.lights[0].disable();
         this.lights[0].update();
         //moonlight
         this.lights[1].setPosition(10,15,10,1);
-        this.lights[1].setDiffuse(212/255, 235/255, 255/255, 1.0);
+        this.lights[1].setDiffuse(212/255 *0.4, 235/255 *0.4, 255/255 *0.4, 1.0);
         this.lights[1].setVisible(true);
         this.lights[1].constant_attenuation=0.1;
         this.lights[1].linear_attenuation = 0.05;
+        //this.lights[1].setConstantAttenuation(0.1);
+        //this.lights[1].setLinearAttenuation(0.05);
         this.lights[1].enable();
         this.lights[1].update();
         //bonfire light
         this.lights[2].setPosition(3,1,0,1);
         this.lights[2].setDiffuse(255/255 *5, 147/255 *5, 41/255 *5, 1.0);
-        this.lights[2].setVisible(true);
+        this.lights[2].setVisible(false);
         this.lights[2].quadratic_attenuation = 0.8;
-        this.lights[2].enable();
+        this.lights[2].disable();
         this.lights[2].update();
-
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
@@ -114,6 +115,18 @@ class MyScene extends CGFscene {
 
         //Apply default appearance
         this.setDefaultAppearance();
+
+        if(this.dayTimeMode==0) {
+            this.lights[0].enable();
+            this.lights[1].disable();
+        }
+        else {
+            this.lights[0].disable();
+            this.lights[1].enable();
+        }
+
+        if(this.bonfire==true) this.lights[2].enable();
+        else this.lights[2].disable();
 
 
         // ---- BEGIN Primitive drawing section
