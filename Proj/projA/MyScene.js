@@ -145,6 +145,7 @@ class MyScene extends CGFscene {
         
         
         //drawing house in center of scene
+        //this.lights[1].setLinearAttenuation(0.05);
         this.pushMatrix();
         this.translate(0,1,0);
         this.house.display();

@@ -56,7 +56,7 @@ class MyCubeMap extends CGFobject {
     this.materialNightFront.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialNightFront.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialNightFront.setShininess(10.0);
-    this.materialNightFront.loadTexture('tex/420.jpeg'); //day
+    this.materialNightFront.loadTexture('tex/NightFront.png'); //day
     this.materialNightFront.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialNightLeft = new CGFappearance(scene); // left
@@ -64,7 +64,7 @@ class MyCubeMap extends CGFobject {
     this.materialNightLeft.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialNightLeft.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialNightLeft.setShininess(10.0);
-    this.materialNightLeft.loadTexture('tex/420.jpeg'); //day
+    this.materialNightLeft.loadTexture('tex/NightLeft.png'); //day
     this.materialNightLeft.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialNightRight = new CGFappearance(scene); //right
@@ -72,7 +72,7 @@ class MyCubeMap extends CGFobject {
     this.materialNightRight.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialNightRight.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialNightRight.setShininess(10.0);
-    this.materialNightRight.loadTexture('tex/420.jpeg'); //day
+    this.materialNightRight.loadTexture('tex/NightRight.png'); //day
     this.materialNightRight.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialNightBack = new CGFappearance(scene); //back
@@ -80,7 +80,7 @@ class MyCubeMap extends CGFobject {
     this.materialNightBack.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialNightBack.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialNightBack.setShininess(10.0);
-    this.materialNightBack.loadTexture('tex/420.jpeg'); //day
+    this.materialNightBack.loadTexture('tex/NightBack.png'); //day
     this.materialNightBack.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialNightUp = new CGFappearance(scene); //up
@@ -88,7 +88,7 @@ class MyCubeMap extends CGFobject {
     this.materialNightUp.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialNightUp.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialNightUp.setShininess(10.0);
-    this.materialNightUp.loadTexture('tex/420.jpeg'); //day
+    this.materialNightUp.loadTexture('tex/NightUp.png'); //day
     this.materialNightUp.setTextureWrap('REPEAT', 'REPEAT');
     
     
