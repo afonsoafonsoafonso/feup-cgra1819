@@ -205,10 +205,12 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         //drwaing bonfire
-        this.pushMatrix();
-        this.translate(3,0,0);
-        this.fire.display();
-        this.popMatrix();
+        if(this.bonfire) {
+            this.pushMatrix();
+            this.translate(3,0,0);
+            this.fire.display();
+            this.popMatrix();
+        }
         
         //drawing plane / grass field / base of rest of scene
         this.pushMatrix();
