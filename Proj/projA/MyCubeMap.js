@@ -60,13 +60,14 @@ class MyCubeMap extends CGFobject {
         
         //this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST); 
         this.scene.pushMatrix();
+        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST); 
         this.scene.scale(60,60,60);
         this.scene.translate(0,0.5,0);
 
         // ---- Side1 Operations
         this.scene.pushMatrix();
         this.scene.translate(0,0,-0.5);
-        this.materialFront.apply();
+        this.materialLeft.apply();
         this.side.display();
 
         // ---- Side2 Operations
@@ -75,7 +76,7 @@ class MyCubeMap extends CGFobject {
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI/2,0,1,0);
         this.scene.translate(0,0,-0.5);
-        this.materialLeft.apply();
+        this.materialFront.apply();
         this.side.display();
 
         // ---- Side3 Operations
