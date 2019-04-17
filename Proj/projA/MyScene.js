@@ -19,7 +19,13 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
         
-
+        this.materialLake = new CGFappearance(this);
+        this.materialLake.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialLake.setSpecular(4, 4, 4, 4);
+        this.materialLake.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.materialLake.setShininess(6);
+        this.materialLake.loadTexture('tex/water.jpeg');
+        this.materialLake.setTextureWrap('REPEAT','REPEAT');
 
 
         this.materialDown = new CGFappearance(this);
@@ -39,8 +45,7 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.plane = new MyQuad(this,this.plane_coords);
         this.house = new MyHouse(this);
-        this.hill1 = new MyVoxelHill(this,4);
-        this.hill2 = new MyVoxelHill(this,3);
+        this.hill = new MyVoxelHill(this,4);
         this.treeRow = new MyTreeRowPatch(this);
         this.treeGroup = new MyTreeGroupPatch(this);
         this.cubeMap = new MyCubeMap(this);
@@ -80,7 +85,7 @@ class MyScene extends CGFscene {
         this.lights[1].enable();
         this.lights[1].update();
         //bonfire light
-        this.lights[2].setPosition(3,1,0,1);
+        this.lights[2].setPosition(3,1.5,0,1);
         this.lights[2].setDiffuse(255/255 *5, 147/255 *5, 41/255 *5, 1.0);
         this.lights[2].setVisible(false);
         this.lights[2].quadratic_attenuation = 0.8;
@@ -143,17 +148,18 @@ class MyScene extends CGFscene {
         this.house.display();
         this.popMatrix();
 
-        //drawing maller hill
+        //drawing smaller hill
         this.pushMatrix();
+        this.scale(1,2,1)   ;
         this.translate(-10,0,-6);
-        this.hill1.display();
+        this.hill.display();
         this.popMatrix();
-
-        //drawing bigger hill
+        //drawing taller hill
         this.pushMatrix();
-        this.translate(-8,0,-22);
-        this.hill2.display();
-        this.popMatrix();
+        this.translate(-10,0,12);
+        this.hill.display();
+        this.popMatrix();   
+
 
         //drawing tree rows
         this.pushMatrix();
@@ -181,6 +187,12 @@ class MyScene extends CGFscene {
         this.translate(-14,0,8.3);
         this.treeGroup.display();
         this.popMatrix();
+        //
+        this.pushMatrix();
+        this.scale(0.6,0.6,0.6);
+        this.translate(8,0,15);
+        this.treeGroup.display();
+        this.popMatrix();
 
         // CubeMap
         this.pushMatrix();
@@ -199,6 +211,15 @@ class MyScene extends CGFscene {
         this.scale(60,60,60);
         this.rotate(-Math.PI/2,1,0,0);
         this.materialDown.apply();
+        this.plane.display();
+        this.popMatrix();
+
+        //drwaing water / lake
+        this.pushMatrix();
+        this.translate(7,0.01,0);
+        this.scale(5,5,5);
+        this.rotate(-Math.PI/2,1,0,0);
+        this.materialLake.apply();
         this.plane.display();
         this.popMatrix();
         

@@ -14,7 +14,7 @@ class MyVoxelHill extends CGFobject {
         this.materialHill.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialHill.setSpecular(0.1, 0.1, 0.1, 1);
         this.materialHill.setShininess(10.0);
-        this.materialHill.loadTexture('tex/420.jpeg');
+        this.materialHill.loadTexture('tex/mountain.jpg');
         this.materialHill.setTextureWrap('REPEAT', 'REPEAT');
     }
 
