@@ -3,11 +3,24 @@ class MyBonfire extends CGFobject {
         super(scene);
         this.cube = new MyUnitCubeQuad(scene);
         this.triangle = new MyTriangleBig(scene);
+        this.plane = new MyQuad(scene);
+
+
+        //materials
+
+        this.materialLog = new CGFappearance(scene);
+        this.materialLog.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialLog.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialLog.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialLog.setShininess(1.0);
+        this.materialLog.loadTexture('tex/log2.jpg');
+        this.materialLog.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     display() {
 
         this.scene.pushMatrix();
+        this.materialLog.apply();
         this.scene.translate(-0.45,0,0);
         this.scene.scale(0.2,0.4,0.7);
         this.cube.display();
