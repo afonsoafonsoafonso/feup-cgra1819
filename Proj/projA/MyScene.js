@@ -153,12 +153,12 @@ class MyScene extends CGFscene {
 
         //drawing smaller hill
         this.pushMatrix();
-        this.scale(1,2,1)   ;
         this.translate(-10,0,-6);
         this.hill.display();
         this.popMatrix();
         //drawing taller hill
         this.pushMatrix();
+        this.scale(1,2,1);
         this.translate(-10,0,12);
         this.hill.display();
         this.popMatrix();   
