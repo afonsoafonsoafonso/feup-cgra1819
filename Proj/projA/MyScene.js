@@ -45,14 +45,17 @@ class MyScene extends CGFscene {
         this.bonfire = false;
     }
     initLights() {
+        //sunlight
         this.lights[0].setPosition(10, 15, 10, 1);
-        this.lights[0].setDiffuse(114.5/255 *3.5, 105.5/255 * 3.5, 84.3/255 * 3.5, 1.0);
-        this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);
+        //lights[0].setDiffuse(114.5/255 *3.5, 105.5/255 * 3.5, 84.3/255 * 3.5, 1.0);
+        this.lights[0].setDiffuse(255/255*2, 241/255 *2 , 224/255 *2 , 1.0);
+
+        //this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);
         this.lights[0].setVisible(true);
         this.lights[0].constant_attenuation = 1.0; 
-        //this.lights[0].setAmbient(1.0, 1.0, 1.0, 10);
         this.lights[0].enable();
         this.lights[0].update();
+        //moonlight
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
