@@ -60,6 +60,13 @@ class MyScene extends CGFscene {
         this.lights[1].linear_attenuation = 0.05;
         this.lights[1].enable();
         this.lights[1].update();
+        //bonfire light
+        this.lights[2].setPosition(3,1,0,1);
+        this.lights[2].setDiffuse(255/255 *5, 147/255 *5, 41/255 *5, 1.0);
+        this.lights[2].setVisible(true);
+        this.lights[2].linear_attenuation = 2;
+        this.lights[2].enable();
+        this.lights[2].update();
 
     }
     initCameras() {
@@ -84,6 +91,7 @@ class MyScene extends CGFscene {
 
         this.lights[0].update();
         this.lights[1].update();
+        this.lights[2].update();
 
         // Draw axis
         if (this.displayAxis)
