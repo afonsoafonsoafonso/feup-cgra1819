@@ -29,6 +29,7 @@ class MyScene extends CGFscene {
         this.treeRow = new MyTreeRowPatch(this);
         this.treeGroup = new MyTreeGroupPatch(this);
         this.cubeMap = new MyCubeMap(this);
+        this.fire = new MyBonfire(this);
         /*this.prism = new MyPrism(this,5);
         this.cylinder = new MyCylinder(this,30);
         this.cone = new MyCone(this,10,10);
@@ -125,18 +126,17 @@ class MyScene extends CGFscene {
         this.treeGroup.display();
         this.popMatrix();
 
-
         // CubeMap
         this.pushMatrix();
+        this.translate(0,-1,0);
         this.cubeMap.display();
-        //this.cylinder.display();
-        //this.prism.display();
-        //this.cone.display();
-        //this.cylinder.enableNormalViz();
-        //this.tree.display();
-        //this.treePatch.display();
-        //this.house.display();
-        //this.treeRow.display();
+        this.popMatrix();
+
+        //drwaing bonfire
+        this.pushMatrix();
+        this.translate(3,0,0);
+        this.fire.display();
+        this.popMatrix();
         
         // ---- END Primitive drawing section
     }
