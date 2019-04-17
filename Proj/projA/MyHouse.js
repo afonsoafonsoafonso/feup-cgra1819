@@ -56,6 +56,7 @@ class MyHouse extends CGFobject {
         this.scene.translate(2,-1,0);
         this.scene.scale(0.2,2,0.2);
         this.scene.translate(-3.5,0,5.5);
+        this.scene.rotate(Math.PI/2,0,1,0);
         this.materialPillar.apply();
         this.prism.display();
         this.scene.popMatrix();
@@ -64,6 +65,7 @@ class MyHouse extends CGFobject {
         this.scene.translate(2,-1,0);
         this.scene.scale(0.2,2,0.2);
         this.scene.translate(-3.5,0,-5.5);
+        this.scene.rotate(Math.PI/2,0,1,0);
         this.prism.display();
         this.scene.popMatrix();
     }

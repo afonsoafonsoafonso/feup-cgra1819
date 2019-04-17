@@ -9,9 +9,15 @@ class MyBonfire extends CGFobject {
 
         //materials
         this.materialFire = new CGFappearance(scene);
-        this.materialFire.setDiffuse(0,0,0,1);
+        /*this.materialFire.setDiffuse(0,0,0,1);
         this.materialFire.setSpecular(0,0,0,1);
-        this.materialFire.setAmbient(209/255, 22.7/255, 14.9/255, 1);
+        this.materialFire.setAmbient(209/255, 22.7/255, 14.9/255, 1);*/
+        this.materialFire.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialFire.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialFire.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialFire.setShininess(1.0);
+        this.materialFire.loadTexture('tex/fire.jpg');
+        this.materialFire.setTextureWrap('REPEAT', 'REPEAT');
 
         this.materialLog = new CGFappearance(scene);
         this.materialLog.setAmbient(0.1, 0.1, 0.1, 1);
@@ -20,6 +26,14 @@ class MyBonfire extends CGFobject {
         this.materialLog.setShininess(1.0);
         this.materialLog.loadTexture('tex/log2.jpg');
         this.materialLog.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.materialCoal = new CGFappearance(scene);
+        this.materialCoal.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialCoal.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialCoal.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialCoal.setShininess(1.0);
+        this.materialCoal.loadTexture('tex/coal.jpg');
+        this.materialCoal.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     display() {
@@ -53,6 +67,12 @@ class MyBonfire extends CGFobject {
         this.scene.scale(0.2,1,0.2);
         this.materialFire.apply();
         this.cone.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.scale(0.7,0.1,0.7);
+        this.materialCoal.apply();
+        this.cube.display();
         this.scene.popMatrix();
 
 
