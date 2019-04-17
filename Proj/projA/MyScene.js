@@ -39,6 +39,10 @@ class MyScene extends CGFscene {
         this.treeRow = new MyTreeRowPatch(this);*/
 
         //Objects connected to MyInterface
+        this.displayAxis = true;
+        this.dayMode = true;
+        this.nightMode = false;
+        this.bonfire = false;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -66,11 +70,15 @@ class MyScene extends CGFscene {
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
 
+        this.lights[0].update();
+
         // Draw axis
-        this.axis.display();
+        if (this.displayAxis)
+            this.axis.display();
 
         //Apply default appearance
         this.setDefaultAppearance();
+
 
         // ---- BEGIN Primitive drawing section
         

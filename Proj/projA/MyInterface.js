@@ -16,6 +16,11 @@ class MyInterface extends CGFinterface {
         
         var obj = this;
 
+        this.gui.add(this.scene, 'displayAxis').name("Display axis");
+        this.gui.add(this.scene, 'dayMode').name("Day");
+        this.gui.add(this.scene, 'nightMode').name("Night");
+        this.gui.add(this.scene, 'bonfire').name("Bonfire");
+
         return true;
     }
 }
