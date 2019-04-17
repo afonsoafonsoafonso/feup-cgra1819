@@ -47,15 +47,20 @@ class MyScene extends CGFscene {
     initLights() {
         //sunlight
         this.lights[0].setPosition(10, 15, 10, 1);
-        //lights[0].setDiffuse(114.5/255 *3.5, 105.5/255 * 3.5, 84.3/255 * 3.5, 1.0);
-        this.lights[0].setDiffuse(255/255*2, 241/255 *2 , 224/255 *2 , 1.0);
-
-        //this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);
+        this.lights[0].setDiffuse(255/255, 241/255 , 224/255 , 1.0);
         this.lights[0].setVisible(true);
-        this.lights[0].constant_attenuation = 1.0; 
-        this.lights[0].enable();
+        this.lights[0].constant_attenuation = 0.1; 
+        //this.lights[0].enable();
         this.lights[0].update();
         //moonlight
+        this.lights[1].setPosition(10,15,10,1);
+        this.lights[1].setDiffuse(212/255, 235/255, 255/255, 1.0);
+        this.lights[1].setVisible(true);
+        this.lights[1].constant_attenuation=0.1;
+        this.lights[1].linear_attenuation = 0.05;
+        this.lights[1].enable();
+        this.lights[1].update();
+
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
@@ -78,6 +83,7 @@ class MyScene extends CGFscene {
         this.applyViewMatrix();
 
         this.lights[0].update();
+        this.lights[1].update();
 
         // Draw axis
         if (this.displayAxis)
