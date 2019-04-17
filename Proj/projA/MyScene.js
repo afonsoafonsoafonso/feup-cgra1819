@@ -89,6 +89,7 @@ class MyScene extends CGFscene {
         //bonfire light
         this.lights[2].setPosition(3,1.5,0,1);
         this.lights[2].setDiffuse(255/255 *5, 147/255 *5, 41/255 *5, 1.0);
+        this.lights[2].setSpecular(255/255 *8, 147/255 *8, 41/255 *8, 1.0);
         this.lights[2].setVisible(false);
         this.lights[2].quadratic_attenuation = 0.8;
         this.lights[2].disable();
@@ -153,12 +154,12 @@ class MyScene extends CGFscene {
 
         //drawing smaller hill
         this.pushMatrix();
-        this.scale(1,2,1)   ;
         this.translate(-10,0,-6);
         this.hill.display();
         this.popMatrix();
         //drawing taller hill
         this.pushMatrix();
+        this.scale(1,2,1);
         this.translate(-10,0,12);
         this.hill.display();
         this.popMatrix();   
