@@ -8,9 +8,18 @@ class MyVoxelHill extends CGFobject {
         super(scene);
         this.cube = new MyUnitCubeQuad(scene);
         this.height = height;
+
+        this.materialHill = new CGFappearance(scene);
+        this.materialHill.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialHill.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialHill.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialHill.setShininess(10.0);
+        this.materialHill.loadTexture('tex/420.jpeg');
+        this.materialHill.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     display() {
+        
         //iX: posição inical em X do 1º cubo
         //iY: idem para Y
         //iZ: idem para Z
@@ -23,6 +32,7 @@ class MyVoxelHill extends CGFobject {
             if(i==0) {
                 this.scene.pushMatrix();
                 this.scene.translate(0,this.height-0.5,0);
+                this.materialHill.apply();
                 this.cube.display();
                 this.scene.popMatrix();
             }
