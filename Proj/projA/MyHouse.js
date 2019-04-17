@@ -29,7 +29,7 @@ class MyHouse extends CGFobject {
         this.materialPillar = new CGFappearance(scene);
         this.materialPillar.setAmbient(0.1, 0.1, 0.1, 1);
         this.materialPillar.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialPillar.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialPillar.setSpecular(10, 10, 10, 1);
         this.materialPillar.setShininess(10.0);
         this.materialPillar.loadTexture('tex/pillar.jpg');
         this.materialPillar.setTextureWrap('REPEAT', 'REPEAT');
