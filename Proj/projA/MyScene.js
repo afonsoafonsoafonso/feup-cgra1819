@@ -44,6 +44,7 @@ class MyScene extends CGFscene {
         this.treeRow = new MyTreeRowPatch(this);
         this.treeGroup = new MyTreeGroupPatch(this);
         this.cubeMap = new MyCubeMap(this);
+        this.fire = new MyBonfire(this);
         /*this.prism = new MyPrism(this,5);
         this.cylinder = new MyCylinder(this,30);
         this.cone = new MyCone(this,10,10);
@@ -53,12 +54,35 @@ class MyScene extends CGFscene {
         this.treeRow = new MyTreeRowPatch(this);*/
 
         //Objects connected to MyInterface
+        this.displayAxis = true;
+        this.dayMode = true;
+        this.nightMode = false;
+        this.bonfire = false;
     }
     initLights() {
-        this.lights[0].setPosition(15, 2, 5, 1);
-        this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
-        this.lights[0].enable();
+        //sunlight
+        this.lights[0].setPosition(10, 15, 10, 1);
+        this.lights[0].setDiffuse(255/255, 241/255 , 224/255 , 1.0);
+        this.lights[0].setVisible(true);
+        this.lights[0].constant_attenuation = 0.1; 
+        //this.lights[0].enable();
         this.lights[0].update();
+        //moonlight
+        this.lights[1].setPosition(10,15,10,1);
+        this.lights[1].setDiffuse(212/255, 235/255, 255/255, 1.0);
+        this.lights[1].setVisible(true);
+        this.lights[1].constant_attenuation=0.1;
+        this.lights[1].linear_attenuation = 0.05;
+        this.lights[1].enable();
+        this.lights[1].update();
+        //bonfire light
+        this.lights[2].setPosition(3,1,0,1);
+        this.lights[2].setDiffuse(255/255 *5, 147/255 *5, 41/255 *5, 1.0);
+        this.lights[2].setVisible(true);
+        this.lights[2].quadratic_attenuation = 0.8;
+        this.lights[2].enable();
+        this.lights[2].update();
+
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
@@ -80,11 +104,17 @@ class MyScene extends CGFscene {
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
 
+        this.lights[0].update();
+        this.lights[1].update();
+        this.lights[2].update();
+
         // Draw axis
-        this.axis.display();
+        if (this.displayAxis)
+            this.axis.display();
 
         //Apply default appearance
         this.setDefaultAppearance();
+
 
         // ---- BEGIN Primitive drawing section
         
@@ -134,18 +164,17 @@ class MyScene extends CGFscene {
         this.treeGroup.display();
         this.popMatrix();
 
-
         // CubeMap
         this.pushMatrix();
+        this.translate(0,-1,0);
         this.cubeMap.display();
-        //this.cylinder.display();
-        //this.prism.display();
-        //this.cone.display();
-        //this.cylinder.enableNormalViz();
-        //this.tree.display();
-        //this.treePatch.display();
-        //this.house.display();
-        //this.treeRow.display();
+        this.popMatrix();
+
+        //drwaing bonfire
+        this.pushMatrix();
+        this.translate(3,0,0);
+        this.fire.display();
+        this.popMatrix();
         
         //drawing plane / grass field / base of rest of scene
         this.pushMatrix();
