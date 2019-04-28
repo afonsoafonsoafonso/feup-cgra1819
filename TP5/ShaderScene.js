@@ -52,7 +52,7 @@ class ShaderScene extends CGFscene {
 		this.appearance.setShininess(120);
 
 		this.texture = new CGFtexture(this, "textures/texture.jpg");
-		this.appearance.setTexture(this.texture);
+		this.appearance.setTexture(this.texture3);
 		this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
 		this.texture2 = new CGFtexture(this, "textures/FEUP.jpg");
@@ -83,6 +83,7 @@ class ShaderScene extends CGFscene {
 		this.testShaders[5].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ timeFactor: 0 });
+		this.testShaders[11].setUniformsValues({ uSampler2: 1, timeFactor: 0});
 
 
 		// Shaders interface variables
@@ -213,6 +214,12 @@ class ShaderScene extends CGFscene {
 
 		// bind additional texture to texture unit 1
 		this.texture2.bind(1);
+		if(this.selectedExampleShader==11){
+		this.texture3.bind(0);
+		this.texture4.bind(1);
+		this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.REPEAT);
+		this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.REPEAT);
+		}
 
 		//Uncomment following lines in case texture must have wrapping mode 'REPEAT'
 		//this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.REPEAT);
