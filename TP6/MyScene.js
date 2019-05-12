@@ -1,7 +1,7 @@
 /**
-* MyScene
-* @constructor
-*/
+ * MyScene
+ * @constructor
+ */
 class MyScene extends CGFscene {
     constructor() {
         super();
@@ -21,7 +21,8 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
 
         //Objects connected to MyInterface
-        this.axiom = "X";this.ruleF = "FF";
+        this.axiom = "X";
+        this.ruleF = "FF";
         this.ruleX = "F[-X][X]F[-X]+FX";
         this.angle = 30.0;
         this.iterations = 4;
@@ -30,10 +31,13 @@ class MyScene extends CGFscene {
 
         this.doGenerate = function () {
             this.lSystem.generate(
-                this.axiom,
-                {
-                    "F": [ this.ruleF ],
-                    "X": [ this.ruleX ]
+                this.axiom, {
+                    'F': ['FF'],
+                    'X': [
+                        'F[-X][X]F[-X]+X', 'F[-X][X]+X', 'F[+X]-X',
+                        'F[/X][X]F[\\X]+X', 'F[\X][X]/X', 'F[/X]\X',
+                        'F[^X][X]F[&X]^X', 'F[^X]&X', 'F[&X]^X'
+                    ]
                 },
                 this.angle,
                 this.iterations,
@@ -46,7 +50,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        
+
     }
 
     initLights() {
