@@ -68,7 +68,7 @@ class MyScene extends CGFscene {
     }
     update(t) {
         this.checkKeys();
-        this.y = Math.sin(Math.PI*t/650);
+        this.y = Math.sin(Math.PI*t/800);
         this.z = this.z + this.speed*Math.cos(this.orientation);
         this.x = this.x + this.speed*Math.sin(this.orientation);
     }
