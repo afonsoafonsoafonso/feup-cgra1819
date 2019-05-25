@@ -15,6 +15,7 @@ serialInclude(['../lib/CGF.js',
                 'MyBird.js', 
                 'MyCylinder.js', 
                 'MyTriangle.js',
+                'MyParallelogram.js',
 
     main = function () {
         var app = new CGFapplication(document.body);

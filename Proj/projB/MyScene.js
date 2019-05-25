@@ -80,7 +80,7 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
-        this.plane.display();
+        //this.plane.display();
         this.popMatrix();
         //MyBird Drawing
         this.pushMatrix();
