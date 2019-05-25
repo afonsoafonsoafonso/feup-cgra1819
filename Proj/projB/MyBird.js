@@ -13,6 +13,13 @@ class MyBird extends CGFobject {
         this.eye = new MyUnitCubeQuad(scene);
         this.tail = new MyParallelogram(scene);
         // talvez adicionar patinhas fofinhas mais tarde
+        
+        //initializing bird variables
+        this.orientation = 0;
+        this.speed = 0;
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
         //Initializing object materials
         this.red = new CGFappearance(scene);
         this.red.setAmbient(255/255, 20/255, 20/255, 1.0);
@@ -45,8 +52,26 @@ class MyBird extends CGFobject {
         this.blue.setShininess(10.0);
     }
 
+    accelerate(v) {
+        this.speed += v;
+    }
+
+    turn(v) {
+        this.orientation += v;
+    }
+
+    update(t) {
+        //this.checkKeys();
+        this.y = Math.sin(Math.PI*t/500);
+        this.z = this.z + this.speed*Math.cos(this.orientation);
+        this.x = this.x + this.speed*Math.sin(this.orientation);
+    }
+
     display() {
         //Body display
+        this.scene.pushMatrix();
+        this.scene.translate(this.x,this.y,this.z);
+        this.scene.rotate(this.orientation,0,1,0);
         this.scene.pushMatrix();
         this.scene.scale(1, 1, 1.5);
         this.red.apply();

@@ -27,11 +27,7 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this);
 
         //initiazliing bird movement variables
-        this.orientation = 0;
-        this.speed = 0;
-        this.x = 0;
-        this.y = 3;
-        this.z = 0;
+        this.acceleration = 0;
 
         //Objects connected to MyInterface
 
@@ -59,18 +55,26 @@ class MyScene extends CGFscene {
         // Check for key codes e.g. in ​https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
             text += " W "; keysPressed = true;
+            this.bird.accelerate(this.acceleration);
         }
         if (this.gui.isKeyPressed("KeyS")) {
             text += " S "; keysPressed = true;
+            this.bird.accelerate(-this.acceleration);
+        }
+        if (this.gui.isKeyPressed("KeyA")) {
+            text += " A "; keysPressed = true;
+            this.bird.turn(Math.PI/10);
+        }
+        if (this.gui.isKeyPressed("KeyD")) {
+            text += " D "; keysPressed = true;
+            this.bird.turn(-Math.PI/10);
         }
         if (keysPressed)
             console.log(text);
     }
     update(t) {
         this.checkKeys();
-        this.y = Math.sin(Math.PI*t/800);
-        this.z = this.z + this.speed*Math.cos(this.orientation);
-        this.x = this.x + this.speed*Math.sin(this.orientation);
+        this.bird.update(t);
     }
 
     display() {
@@ -98,7 +102,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
         //MyBird Drawing
         this.pushMatrix();
-        this.translate(0,3+this.y,0);
+        this.translate(0,3,0);
         this.bird.display();
         // ---- END Primitive drawing section
     }
