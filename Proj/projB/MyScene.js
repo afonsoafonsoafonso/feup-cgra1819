@@ -26,7 +26,18 @@ class MyScene extends CGFscene {
         this.plane = new Plane(this, 32);
         this.bird = new MyBird(this);
 
+        //initiazliing bird movement variables
+        this.orientation = 0;
+        this.speed = 0;
+        this.x = 0;
+        this.y = 3;
+        this.z = 0;
+
         //Objects connected to MyInterface
+
+        // set the scene update period 
+		// (to invoke the update() method every 50ms or as close as possible to that )
+        this.setUpdatePeriod(50);
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -57,6 +68,9 @@ class MyScene extends CGFscene {
     }
     update(t) {
         this.checkKeys();
+        this.y = Math.sin(Math.PI*t/650);
+        this.z = this.z + this.speed*Math.cos(this.orientation);
+        this.x = this.x + this.speed*Math.sin(this.orientation);
     }
 
     display() {
@@ -80,11 +94,11 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
-        //this.plane.display();
+        this.plane.display();
         this.popMatrix();
         //MyBird Drawing
         this.pushMatrix();
-        this.translate(0,5,0);
+        this.translate(0,3+this.y,0);
         this.bird.display();
         // ---- END Primitive drawing section
     }
