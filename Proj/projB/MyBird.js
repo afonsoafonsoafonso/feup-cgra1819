@@ -70,7 +70,7 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
         //tail display
         this.scene.pushMatrix();
-        this.scene.translate(0.25, 0, -0.4);
+        this.scene.translate(0.22, 0, -0.4);
         this.scene.scale(0.4, 0.4, 0.4);
         this.scene.rotate(Math.PI/2, 0, 0, 1);
         this.scene.rotate(Math.PI/4, 0, 1, 0);
