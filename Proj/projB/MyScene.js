@@ -26,8 +26,10 @@ class MyScene extends CGFscene {
         this.plane = new Plane(this, 32);
         this.bird = new MyBird(this);
 
-        //initiazliing bird movement variables
+        //initiazliing bird variables
         this.acceleration = 0.1;
+        this.scaleFactor = 1;
+        this.speedFactor = 1;
 
         //Objects connected to MyInterface
 
@@ -55,19 +57,23 @@ class MyScene extends CGFscene {
         // Check for key codes e.g. in ​https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
             text += " W "; keysPressed = true;
-            this.bird.accelerate(this.acceleration);
+            this.bird.accelerate(this.acceleration*this.speedFactor);
         }
         if (this.gui.isKeyPressed("KeyS")) {
             text += " S "; keysPressed = true;
-            this.bird.accelerate(-this.acceleration);
+            this.bird.accelerate(-this.acceleration*this.speedFactor);
         }
         if (this.gui.isKeyPressed("KeyA")) {
             text += " A "; keysPressed = true;
-            this.bird.turn(Math.PI/10);
+            this.bird.turn(Math.PI/10*this.speedFactor);
         }
         if (this.gui.isKeyPressed("KeyD")) {
             text += " D "; keysPressed = true;
-            this.bird.turn(-Math.PI/10);
+            this.bird.turn(-Math.PI/10*this.speedFactor);
+        }
+        if (this.gui.isKeyPressed("KeyR")) {
+            text += " R "; keysPressed = true;
+            this.bird.reset();
         }
         if (keysPressed)
             console.log(text);
@@ -103,6 +109,7 @@ class MyScene extends CGFscene {
         //MyBird Drawing
         this.pushMatrix();
         this.translate(0,3,0);
+        this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
         this.bird.display();
         // ---- END Primitive drawing section
     }
