@@ -54,6 +54,8 @@ class MyBird extends CGFobject {
 
     accelerate(v) {
         this.speed += v;
+        if(this.speed>0.7) this.speed=0.7;
+        else if(this.speed<0) this.speed=0;
     }
 
     turn(v) {

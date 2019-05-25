@@ -27,7 +27,7 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this);
 
         //initiazliing bird movement variables
-        this.acceleration = 0;
+        this.acceleration = 0.1;
 
         //Objects connected to MyInterface
 
