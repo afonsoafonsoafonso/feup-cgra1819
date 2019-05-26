@@ -25,6 +25,27 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.plane = new Plane(this, 32);
         this.bird = new MyBird(this);
+        this.branch = new MyTreeBranch(this);
+        this.branches = [];
+        //this.branchPos[4][4];
+        this.branchX = [];
+        //this.branchY = [];
+        this.branchZ = [];
+        this.branchR = [];
+        for(var i=0; i<4; i++) {
+            //this.branchPos[i][0] = Math.random()*60.1-30.1;
+            //this.branchPos[i][1] = -2.95;
+            //this.branchPos[i][2] = Math.random()*60.1-30.1;
+            //this.branchPos[i][4] = Math.random()*2*Math.PI;
+            this.branchX.push(Math.random()*60.1-30.1);
+            this.branchZ.push(Math.random()*60.1-30.1);
+            this.branchR.push(Math.random()*2*Math.PI);
+            this.branches.push(new MyTreeBranch(this));
+            console.log(this.branchX[i]);
+            console.log(this.branchZ[i]);
+            console.log(this.branchR[i]);
+            console.log("      ");
+        }
 
         //initiazliing bird variables
         this.acceleration = 0.1;
@@ -111,6 +132,18 @@ class MyScene extends CGFscene {
         this.translate(0,3,0);
         this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
         this.bird.display();
+        this.popMatrix();
+        //MyTreeBranch drawing
+        //this.pushMatrix();
+        //this.translate(0,-2.95,0);
+        for(var i=0; i<4; i++) {
+            this.pushMatrix();
+            this.translate(this.branchX[i], -2.95, this.branchZ[i]);
+            //this.rotate(this.branchR[i]);
+            this.branches[i].display();
+            this.popMatrix();
+        }
+
         // ---- END Primitive drawing section
     }
 }
