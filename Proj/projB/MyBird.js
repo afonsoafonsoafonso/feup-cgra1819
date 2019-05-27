@@ -21,6 +21,10 @@ class MyBird extends CGFobject {
         this.y = 0;
         this.z = 0;
         this.dropFlag
+
+        //other variables
+        this.t = 0;
+
         //Initializing object materials
         this.red = new CGFappearance(scene);
         this.red.setAmbient(255/255, 20/255, 20/255, 1.0);
@@ -64,16 +68,16 @@ class MyBird extends CGFobject {
     }
 
     update(t) {
-        if(this.y<= -2.5) this.dropUpDown = 1;
-        else if(this.y>=0 && this.dropUpDown==1 && this.dropFlag==1) {
-            this.dropFlag = 0;
-            this.dropUpDown = -1;
-        }
+        this.t = t;
 
-        if(this.dropFlag) this.y = this.y + this.dropUpDown*0.28;
-        else this.y = Math.sin(Math.PI*t/500);
-        this.z = this.z + this.speed*Math.cos(this.orientation);
-        this.x = this.x + this.speed*Math.sin(this.orientation);
+        if(!this.dropFlag) {
+            console.log("UPDATE T:");
+            console.log(this.t);
+            this.y = Math.sin(Math.PI*t/500);
+            this.z = this.z + this.speed*Math.cos(this.orientation);
+            this.x = this.x + this.speed*Math.sin(this.orientation);
+        }
+        else this.dropAnim();
     }
 
     reset() {
@@ -85,9 +89,18 @@ class MyBird extends CGFobject {
     }
     
     drop() {
-        this.speed = 0;
         this.dropFlag = 1;
         this.dropUpDown = -1;
+        this.speed = 0;
+    }
+
+    dropAnim() {
+        if(this.y <= -2.5) this.dropUpDown = 1;
+        else if(this.y >=0 && this.dropUpDown==1 && this.dropFlag==1) {
+            this.dropFlag = 0;
+            this.dropUpDown = -1;
+        }
+        this.y = this.y + this.dropUpDown*0.28;
     }
 
     display() {
