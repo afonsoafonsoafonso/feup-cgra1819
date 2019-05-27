@@ -64,8 +64,8 @@ class MyBird extends CGFobject {
     }
 
     update(t) {
-        if(this.y<= -2.8) this.dropUpDown = 1;
-        else if(this.y>=0 && this.dropUpDown && this.dropFlag) {
+        if(this.y<= -2.5) this.dropUpDown = 1;
+        else if(this.y>=0 && this.dropUpDown==1 && this.dropFlag==1) {
             this.dropFlag = 0;
             this.dropUpDown = -1;
         }
