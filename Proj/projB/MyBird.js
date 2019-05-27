@@ -68,16 +68,15 @@ class MyBird extends CGFobject {
     }
 
     update(t) {
-        this.t = t;
 
         if(!this.dropFlag) {
-            console.log("UPDATE T:");
-            console.log(this.t);
-            this.y = Math.sin(Math.PI*t/500);
+            this.y = Math.sin(Math.PI*this.t/500);
             this.z = this.z + this.speed*Math.cos(this.orientation);
             this.x = this.x + this.speed*Math.sin(this.orientation);
         }
         else this.dropAnim();
+
+        this.t = t;
     }
 
     reset() {
@@ -99,6 +98,7 @@ class MyBird extends CGFobject {
         else if(this.y >=0 && this.dropUpDown==1 && this.dropFlag==1) {
             this.dropFlag = 0;
             this.dropUpDown = -1;
+            this.t = Math.PI;
         }
         this.y = this.y + this.dropUpDown*0.28;
     }
