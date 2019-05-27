@@ -23,6 +23,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
+        this.nest = new MyNest(this);
         this.plane = new Plane(this, 32);
         this.bird = new MyBird(this);
         this.branch = new MyTreeBranch(this);
@@ -96,6 +97,10 @@ class MyScene extends CGFscene {
             text += " R "; keysPressed = true;
             this.bird.reset();
         }
+        if (this.gui.isKeyPressed("KeyP")) {
+            text += " P "; keysPressed = true;
+            this.bird.drop();
+        }
         if (keysPressed)
             console.log(text);
     }
@@ -138,12 +143,17 @@ class MyScene extends CGFscene {
         //this.translate(0,-2.95,0);
         for(var i=0; i<4; i++) {
             this.pushMatrix();
-            this.translate(this.branchX[i], -2.95, this.branchZ[i]);
+            this.translate(this.branchX[i], 0.05, this.branchZ[i]);
             //this.rotate(this.branchR[i]);
             this.branches[i].display();
             this.popMatrix();
         }
 
+        this.pushMatrix();
+        //this.translate(0.)
+        this.scale(2.5,2.5,2.5);
+        this.nest.display();
+        this.popMatrix();
         // ---- END Primitive drawing section
     }
 }

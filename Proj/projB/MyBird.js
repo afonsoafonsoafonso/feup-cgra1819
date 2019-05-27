@@ -20,6 +20,7 @@ class MyBird extends CGFobject {
         this.x = 0;
         this.y = 0;
         this.z = 0;
+        this.dropFlag
         //Initializing object materials
         this.red = new CGFappearance(scene);
         this.red.setAmbient(255/255, 20/255, 20/255, 1.0);
@@ -63,8 +64,14 @@ class MyBird extends CGFobject {
     }
 
     update(t) {
-        //this.checkKeys();
-        this.y = Math.sin(Math.PI*t/500);
+        if(this.y<= -2.8) this.dropUpDown = 1;
+        else if(this.y>=0 && this.dropUpDown && this.dropFlag) {
+            this.dropFlag = 0;
+            this.dropUpDown = -1;
+        }
+
+        if(this.dropFlag) this.y = this.y + this.dropUpDown*0.28;
+        else this.y = Math.sin(Math.PI*t/500);
         this.z = this.z + this.speed*Math.cos(this.orientation);
         this.x = this.x + this.speed*Math.sin(this.orientation);
     }
@@ -75,7 +82,13 @@ class MyBird extends CGFobject {
         this.y = 0;
         this.z = 0;
         this.x = 0;
-    }  
+    }
+    
+    drop() {
+        this.speed = 0;
+        this.dropFlag = 1;
+        this.dropUpDown = -1;
+    }
 
     display() {
         //Body display
@@ -152,6 +165,7 @@ class MyBird extends CGFobject {
         this.scene.rotate(Math.PI/4, 0, 1, 0);
         this.blue.apply();
         this.tail.display();
+        this.scene.popMatrix();
         this.scene.popMatrix();
     }
 }
