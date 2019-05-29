@@ -12,6 +12,7 @@ class MyBird extends CGFobject {
         this.wing = new MyTriangle(scene);
         this.eye = new MyUnitCubeQuad(scene);
         this.tail = new MyParallelogram(scene);
+        this.branch = new MyTreeBranch(scene);
         // talvez adicionar patinhas fofinhas mais tarde
         
         //initializing bird variables
@@ -97,12 +98,8 @@ class MyBird extends CGFobject {
                this.z <= this.scene.branchZ[i]+1 && this.z >= this.scene.branchZ[i]-1
                && !this.branchHoldFlag) {
                    this.scene.branchDisplayFlags[i] = 1;
+                   this.branchHoldFlag=1;
                }
-        }
-        for(var j=0; j<4; j++) {
-            console.log(j);
-            console.log("BRANCH DISPLAY FLAG: ");
-            console.log(this.scene.branchDisplayFlags[j]);
         }
     }
 
@@ -192,6 +189,14 @@ class MyBird extends CGFobject {
         this.blue.apply();
         this.tail.display();
         this.scene.popMatrix();
+        //branch display when holding it
+        if(this.branchHoldFlag) {
+            this.scene.pushMatrix();
+            this.scene.translate(0.5,-0.65,0);
+            this.branch.display();
+            this.scene.popMatrix();
+        }
+        //final pop
         this.scene.popMatrix();
     }
 }
