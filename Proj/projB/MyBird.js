@@ -20,7 +20,8 @@ class MyBird extends CGFobject {
         this.x = 0;
         this.y = 0;
         this.z = 0;
-        this.dropFlag
+        this.dropFlag = 0;
+        this.branchHoldFlag = 0;
 
         //other variables
         this.t = 0;
@@ -91,6 +92,18 @@ class MyBird extends CGFobject {
         this.dropFlag = 1;
         this.dropUpDown = -1;
         this.speed = 0;
+        for(var i=0; i<4; i++) {
+            if(this.x <= this.scene.branchX[i]+1 && this.x >= this.scene.branchX[i]-1 &&
+               this.z <= this.scene.branchZ[i]+1 && this.z >= this.scene.branchZ[i]-1
+               && !this.branchHoldFlag) {
+                   this.scene.branchDisplayFlags[i] = 1;
+               }
+        }
+        for(var j=0; j<4; j++) {
+            console.log(j);
+            console.log("BRANCH DISPLAY FLAG: ");
+            console.log(this.scene.branchDisplayFlags[j]);
+        }
     }
 
     dropAnim() {

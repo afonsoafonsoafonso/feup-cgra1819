@@ -28,24 +28,18 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this);
         this.branch = new MyTreeBranch(this);
         this.branches = [];
+        this.branchDisplayFlags = [0, 0, 0, 0];
         //this.branchPos[4][4];
         this.branchX = [];
         //this.branchY = [];
         this.branchZ = [];
         this.branchR = [];
         for(var i=0; i<4; i++) {
-            //this.branchPos[i][0] = Math.random()*60.1-30.1;
-            //this.branchPos[i][1] = -2.95;
-            //this.branchPos[i][2] = Math.random()*60.1-30.1;
-            //this.branchPos[i][4] = Math.random()*2*Math.PI;
             this.branchX.push(Math.random()*60.1-30.1);
             this.branchZ.push(Math.random()*60.1-30.1);
             this.branchR.push(Math.random()*2*Math.PI);
             this.branches.push(new MyTreeBranch(this));
-            console.log(this.branchX[i]);
-            console.log(this.branchZ[i]);
-            console.log(this.branchR[i]);
-            console.log("      ");
+            //this.branchDisplayFlags.push(0);
         }
 
         //initiazliing bird variables
@@ -142,11 +136,13 @@ class MyScene extends CGFscene {
         //this.pushMatrix();
         //this.translate(0,-2.95,0);
         for(var i=0; i<4; i++) {
-            this.pushMatrix();
-            this.translate(this.branchX[i], 0.05, this.branchZ[i]);
-            //this.rotate(this.branchR[i]);
-            this.branches[i].display();
-            this.popMatrix();
+            if(this.branchDisplayFlags[i]==0) {
+                this.pushMatrix();
+                this.translate(this.branchX[i], 0.05, this.branchZ[i]);
+                //this.rotate(this.branchR[i]);
+                this.branches[i].display();
+                this.popMatrix();
+            }
         }
 
         this.pushMatrix();
