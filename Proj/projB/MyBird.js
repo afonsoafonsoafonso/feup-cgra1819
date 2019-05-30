@@ -102,15 +102,13 @@ class MyBird extends CGFobject {
                }
         }
         
-        else {
-            for(var i=0; i<4; i++) {
-                if(this.x <= this.scene.branchX[i]+1 && this.x >= this.scene.branchX[i]-1 &&
-                this.z <= this.scene.branchZ[i]+1 && this.z >= this.scene.branchZ[i]-1
-                && !this.branchHoldFlag) {
+        for(var i=0; i<4; i++) {
+            if(this.x <= this.scene.branchX[i]+1 && this.x >= this.scene.branchX[i]-1 &&
+               this.z <= this.scene.branchZ[i]+1 && this.z >= this.scene.branchZ[i]-1
+               && !this.branchHoldFlag) {
                     this.scene.branchDisplayFlags[i] = 1;
                     this.branchHoldFlag=i;
                 }
-            }
         }
     }
 
