@@ -9,6 +9,13 @@ class MyNest extends CGFobject {
         this.branch = new MyTreeBranch(scene);
         this.branchCounter=0;
 
+        this.materialNest = new CGFappearance(scene);
+        this.materialNest.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialNest.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialNest.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialNest.setShininess(10.0);
+        this.materialNest.loadTexture('images/nest.jpg');
+        this.materialNest.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     branchDrop() {
@@ -17,7 +24,7 @@ class MyNest extends CGFobject {
 
     display() {
         this.scene.pushMatrix();
-        //this.materialLog.apply();
+        this.materialNest.apply();
         this.scene.translate(-0.45,0,0);
         this.scene.scale(0.2,0.4,0.7);
         this.cube.display();
