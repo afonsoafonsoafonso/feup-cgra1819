@@ -5,8 +5,14 @@ class MyNest extends CGFobject {
     constructor(scene) {
         super(scene);
         this.cube = new MyUnitCubeQuad(scene);
-        //this.halfSphere = MyHalfSphere(scene,10,10);
-        //this.cone = MyCone
+        this.branch = new MyTreeBranch(scene);
+        this.branch = new MyTreeBranch(scene);
+        this.branchCounter=0;
+
+    }
+
+    branchDrop() {
+        ++this.branchCounter;
     }
 
     display() {
@@ -40,6 +46,15 @@ class MyNest extends CGFobject {
         //this.materialCoal.apply();
         this.cube.display();
         this.scene.popMatrix();
+
+        if(this.branchCounter!=0) {
+            if(this.branchCounter==1) {
+                this.scene.pushMatrix();
+                this.scene.translate(0,0.05,0);
+                this.branch.display();
+                this.scene.popMatrix();
+            }
+        }
 
     }
 }

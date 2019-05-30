@@ -93,13 +93,24 @@ class MyBird extends CGFobject {
         this.dropFlag = 1;
         this.dropUpDown = -1;
         this.speed = 0;
-        for(var i=0; i<4; i++) {
-            if(this.x <= this.scene.branchX[i]+1 && this.x >= this.scene.branchX[i]-1 &&
-               this.z <= this.scene.branchZ[i]+1 && this.z >= this.scene.branchZ[i]-1
-               && !this.branchHoldFlag) {
-                   this.scene.branchDisplayFlags[i] = 1;
-                   this.branchHoldFlag=1;
+
+        if(this.branchHoldFlag!=0) {
+            if(this.x <= 0.45 && this.x >= -0.45 &&
+               this.z <= 0.45 && this.z >0 -0.45) {
+                   this.scene.nest.branchCounter++;
+                   this.branchHoldFlag=0;   
                }
+        }
+        
+        else {
+            for(var i=0; i<4; i++) {
+                if(this.x <= this.scene.branchX[i]+1 && this.x >= this.scene.branchX[i]-1 &&
+                this.z <= this.scene.branchZ[i]+1 && this.z >= this.scene.branchZ[i]-1
+                && !this.branchHoldFlag) {
+                    this.scene.branchDisplayFlags[i] = 1;
+                    this.branchHoldFlag=i;
+                }
+            }
         }
     }
 
