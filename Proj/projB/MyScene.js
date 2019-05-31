@@ -29,6 +29,7 @@ class MyScene extends CGFscene {
         this.branch = new MyTreeBranch(this);
         this.branches = [];
         this.branchDisplayFlags = [0, 0, 0, 0];
+        this.cubeMap = new MyCubeMap(this);
         //this.branchPos[4][4];
         this.branchX = [];
         //this.branchY = [];
@@ -147,8 +148,12 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         //this.translate(0.)
-        this.scale(2.5,2.5,2.5);
+        this.scale(2.5,2.5,2.5); //por esta merda dentro do nest
         this.nest.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.cubeMap.display();
         this.popMatrix();
         // ---- END Primitive drawing section
     }

@@ -54,14 +54,13 @@ class MyNest extends CGFobject {
         this.cube.display();
         this.scene.popMatrix();
 
-        if(this.branchCounter!=0) {
-            if(this.branchCounter==1) {
-                this.scene.pushMatrix();
-                this.scene.translate(0,0.05,0);
-                this.branch.display();
-                this.scene.popMatrix();
-            }
+        for(var i=0; i<this.branchCounter; i++) {
+            this.scene.pushMatrix();
+            this.scene.translate(0,i+0.05,0);
+            this.branch.display();
+            this.scene.popMatrix();
         }
 
     }
+
 }
