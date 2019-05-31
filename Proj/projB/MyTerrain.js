@@ -12,12 +12,12 @@ class MyTerrain extends CGFobject {
 		this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
 		this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
         this.appearance.setShininess(10);
-        this.terrain = new CGFtexture(this, "images/terrain.jpg");
-        this.appearance.loadTexture('images/terrain.jpg');
+        this.terrain = new CGFtexture(this.scene, "images/terrain.jpg");
+        this.appearance.setTexture(this.terrain);
         this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
-        this.heighMap = new CGFtexture(this, "images/heightmap.jpg");
-        this.altimetry = new CGFtexture(this, "images/altimetry.jpg");
+        this.heightMap = new CGFtexture(this.scene, "images/heightmap.jpg");
+        this.altimetry = new CGFtexture(this.scene, "images/altimetry.jpg");
 
 
         this.shader = new CGFshader(this.scene.gl, "shaders/texture2.vert", "shaders/texture2.frag");
@@ -29,9 +29,10 @@ class MyTerrain extends CGFobject {
         this.scene.gl.clear(this.scene.gl.COLOR_BUFFER_BIT | this.scene.gl.DEPTH_BUFFER_BIT);
         
         this.appearance.apply();
-        this.scene.setActiveShader(this.shader);
-        this.heighMap.bind(1);
+        
+        this.heightMap.bind(1);
         this.altimetry.bind(2);
+        this.scene.setActiveShader(this.shader);
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_WRAP_S, this.scene.gl.REPEAT);
 		this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_WRAP_T, this.scene.gl.REPEAT);
         this.scene.pushMatrix();
