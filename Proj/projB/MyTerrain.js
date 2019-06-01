@@ -20,7 +20,7 @@ class MyTerrain extends CGFobject {
         this.altimetry = new CGFtexture(this.scene, "images/altimetry.jpg");
 
 
-        this.shader = new CGFshader(this.scene.gl, "shaders/texture2.vert", "shaders/texture2.frag");
+        this.shader = new CGFshader(this.scene.gl, "shaders/terrain.vert", "shaders/terrain.frag");
         this.shader.setUniformsValues({uSampler2: 1, uSampler3: 2});
     }
 
