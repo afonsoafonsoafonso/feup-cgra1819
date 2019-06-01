@@ -39,7 +39,7 @@ class MyScene extends CGFscene {
             this.branchX.push(Math.random()*60.1-30.1);
             this.branchZ.push(Math.random()*60.1-30.1);
             this.branchR.push(Math.random()*2*Math.PI);
-            this.branches.push(new MyTreeBranch(this));
+            this.branches.push(this.branch);
             //this.branchDisplayFlags.push(0);
         }
 

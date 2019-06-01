@@ -11,6 +11,7 @@ uniform sampler2D uSampler;
 uniform sampler2D uSampler3;
 varying vec2 vTextureCoord;
 
+varying vec3 coords;
 
 void main() {
     vec4 filter = texture2D(uSampler2, aTextureCoord);
@@ -18,4 +19,6 @@ void main() {
 	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition + offset*1.0, 1.0);
 
 	vTextureCoord = aTextureCoord;
+
+	coords = vec3(aVertexPosition + offset*1.0);
 }

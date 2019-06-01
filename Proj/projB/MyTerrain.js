@@ -17,7 +17,7 @@ class MyTerrain extends CGFobject {
         this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
         this.heightMap = new CGFtexture(this.scene, "images/heightmap.jpg");
-        this.altimetry = new CGFtexture(this.scene, "images/altimetry.jpg");
+        this.altimetry = new CGFtexture(this.scene, "images/altimetry.png");
 
 
         this.shader = new CGFshader(this.scene.gl, "shaders/terrain.vert", "shaders/terrain.frag");
