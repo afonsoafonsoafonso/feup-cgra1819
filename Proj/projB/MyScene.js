@@ -127,7 +127,13 @@ class MyScene extends CGFscene {
         this.scale(60, 60, 8);
         this.plane.display();
         this.popMatrix();
+
+        //Translate everything up to match terrain height 
+        this.pushMatrix();
+        this.translate(0,3,0);
+
         //MyBird Drawing
+       
         this.pushMatrix();
         this.translate(0,3,0);
         this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
@@ -150,6 +156,9 @@ class MyScene extends CGFscene {
         //this.translate(0.)
         this.scale(2.5,2.5,2.5); //por esta merda dentro do nest
         this.nest.display();
+        this.popMatrix();
+        
+        // back to normal height
         this.popMatrix();
 
         this.pushMatrix();
