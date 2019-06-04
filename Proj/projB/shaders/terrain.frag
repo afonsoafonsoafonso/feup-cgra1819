@@ -10,12 +10,10 @@ uniform sampler2D uSampler3;
 
 float weight = 0.55; 
 
-varying vec3 coords;
-
 void main() {
 	vec4 color = texture2D(uSampler, vTextureCoord);
+	vec4 height = texture2D(uSampler2, vTextureCoord);
+	vec4 filter = texture2D(uSampler3, vec2(1.0, 1.0 - height.r));
 
-	vec4 filter = texture2D(uSampler3, vec2(0.1, 1.0 - coords.z));
-
-	gl_FragColor = filter * weight + color * weight;
+	gl_FragColor = filter * weight + color * (1.0 - weight);
 }
