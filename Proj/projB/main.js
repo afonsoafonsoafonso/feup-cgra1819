@@ -26,6 +26,8 @@ serialInclude(['../lib/CGF.js',
                 'MyLeaf.js',
                 'MyLSystem.js',
                 'MyLSPlant.js',
+                'MyTree.js',
+                'MyRectangle.js',
 
     main = function () {
         var app = new CGFapplication(document.body);
