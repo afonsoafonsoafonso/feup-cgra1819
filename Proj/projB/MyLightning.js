@@ -1,12 +1,29 @@
-class MyLSPlant extends MyLSystem {
+class MyLightning extends MyLSystem {
     constructor(scene) {
         super(scene);
         this.axiom = "X";
         this.ruleF = "FF";
         this.ruleX = "F[-X][X]F[-X]+FX";
         this.angle = 25.0;
-        this.iterations =3;
+        this.iterations = 4;
         this.scaleFactor = 0.5;
+
+        this.doGenerate = function () {
+            this.generate(
+                this.axiom, {
+                    'F': ['FF'],
+                    'X': [
+                        'F[-X][X]F[-X]+X', 'F[-X][X]+X', 'F[+X]-X',
+                        'F[/X][X]F[\\X]+X', 'F[\X][X]/X', 'F[/X]\X',
+                        'F[^X][X]F[&X]^X', 'F[^X]&X', 'F[&X]^X'
+                    ]
+                },
+                this.angle,
+                this.iterations,
+                this.scaleFactor
+            );
+        }
+        this.doGenerate();
     }
     initGrammar() {
         this.grammar = {
@@ -22,7 +39,7 @@ class MyLSPlant extends MyLSystem {
     }
 
     update(t){
-        
+        this.depth++;
     }
 
     display(){
@@ -79,7 +96,7 @@ class MyLSPlant extends MyLSystem {
                 default:
                     var primitive=this.grammar[this.axiom[i]];
 
-                    if ( primitive && primitive < depth)
+                    if ( primitive )
                     {
                         primitive.display();
                         this.scene.translate(0, 1, 0);
