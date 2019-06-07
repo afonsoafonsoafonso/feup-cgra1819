@@ -34,6 +34,7 @@ class MyScene extends CGFscene {
         this.tree2 = new MyTree(this);
         this.tree3 = new MyTree(this);
         this.tree4 = new MyTree(this);
+        this.trees = new MyTreeGroupPatch(this);
         this.lightning = new MyLightning(this);
         this.house = new MyHouse(this);
 
@@ -191,6 +192,10 @@ class MyScene extends CGFscene {
         this.translate(0,1,6.5);
         this.rotate(Math.PI/2,0,1,0);
         this.house.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.trees.display();
         this.popMatrix();
 
         // back to normal height
