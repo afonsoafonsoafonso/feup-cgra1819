@@ -195,6 +195,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
+        this.scale(1.5,1.5,1.5);
         this.trees.display();
         this.popMatrix();
 
