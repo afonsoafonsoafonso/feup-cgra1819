@@ -43,10 +43,18 @@ class MyScene extends CGFscene {
         //this.branchY = [];
         this.branchZ = [];
         this.branchR = [];
-        for(var i=0; i<4; i++) {
-            this.branchX.push(Math.random()*60.1-30.1);
-            this.branchZ.push(Math.random()*60.1-30.1);
-            this.branchR.push(Math.random()*2*Math.PI);
+        for(var i=0; i<4; i++, this.branchPosCheck=0) {
+            while(!this.branchPosCheck) {
+                var x = Math.random()*60.1-30.1;
+                var z = Math.random()*60.1-30.1;
+                var r = Math.random()*2*Math.PI;
+                this.checkBranchPos(x,z);
+                console.log("ESTA PRESO");
+            }
+            this.branchX.push(x);
+            this.branchZ.push(z);
+            this.branchR.push(r);
+            
             this.branches.push(this.branch);
             //this.branchDisplayFlags.push(0);
         }
@@ -104,12 +112,32 @@ class MyScene extends CGFscene {
             text += " P "; keysPressed = true;
             this.bird.drop();
         }
+        if (this.gui.isKeyPressed("KeyM")) {
+            console.log("\nBIRD X:");
+            console.log(this.bird.x);
+            console.log("\nBIRD Z:");
+            console.log(this.bird.z);
+        }
         if (keysPressed)
             console.log(text);
     }
     update(t) {
         this.checkKeys();
         this.bird.update(t);
+    }
+
+    checkBranchPos(x, z) {
+        //zona A afinal n é plana lol
+        /*if(x >=8.45 && x<=14.5 && z>=-8 && z<=10.5)
+            this.branchPosCheck=1;*/
+        //zona B
+        if(x>=-11 && x<=-2.5 && z>=-8 && z<=14)
+            this.branchPosCheck=1;
+        //zona C
+        else if(x>=-2.2 && x<=8.8 && z>=-15 && z<=3.4)
+            this.branchPosCheck=1;
+        //fora das zonas permitidas para spawn dos galhos
+        else this.branchPosCheck=0;
     }
 
     display() {
@@ -196,7 +224,7 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.scale(1.5,1.5,1.5);
-        this.trees.display();
+        //this.trees.display();
         this.popMatrix();
 
         // back to normal height
