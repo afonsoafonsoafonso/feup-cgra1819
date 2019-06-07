@@ -15,7 +15,7 @@ class MyHouse extends CGFobject {
         this.materialRoof.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialRoof.setSpecular(0.1, 0.1, 0.1, 1);
         this.materialRoof.setShininess(10.0);
-        this.materialRoof.loadTexture('tex/solar.jpg');
+        this.materialRoof.loadTexture('images/solar.jpg');
         this.materialRoof.setTextureWrap('REPEAT', 'REPEAT');
 
         this.materialWoodWall = new CGFappearance(scene);
@@ -23,7 +23,7 @@ class MyHouse extends CGFobject {
         this.materialWoodWall.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialWoodWall.setSpecular(0.1, 0.1, 0.1, 1);
         this.materialWoodWall.setShininess(10.0);
-        this.materialWoodWall.loadTexture('tex/wall.jpg');
+        this.materialWoodWall.loadTexture('images/wall.jpg');
         this.materialWoodWall.setTextureWrap('REPEAT', 'REPEAT');
 
         this.materialPillar = new CGFappearance(scene);
@@ -31,7 +31,7 @@ class MyHouse extends CGFobject {
         this.materialPillar.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialPillar.setSpecular(10, 10, 10, 1);
         this.materialPillar.setShininess(10.0);
-        this.materialPillar.loadTexture('tex/pillar.jpg');
+        this.materialPillar.loadTexture('images/pillar.jpg');
         this.materialPillar.setTextureWrap('REPEAT', 'REPEAT');
     }
     display() {

@@ -35,6 +35,7 @@ class MyScene extends CGFscene {
         this.tree3 = new MyTree(this);
         this.tree4 = new MyTree(this);
         this.lightning = new MyLightning(this);
+        this.house = new MyHouse(this);
 
         //this.branchPos[4][4];
         this.branchX = [];
@@ -184,6 +185,12 @@ class MyScene extends CGFscene {
         this.rotate(Math.PI,0,0,1);
         this.scale(3,8,3);
         this.lightning.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(0,1,6.5);
+        this.rotate(Math.PI/2,0,1,0);
+        this.house.display();
         this.popMatrix();
 
         // back to normal height

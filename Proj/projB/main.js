@@ -29,6 +29,7 @@ serialInclude(['../lib/CGF.js',
                 'MyTree.js',
                 'MyRectangle.js',
                 'MyLightning.js',
+                'MyPyramid.js',
 
     main = function () {
         var app = new CGFapplication(document.body);
