@@ -34,7 +34,7 @@ class MyScene extends CGFscene {
         this.tree2 = new MyTree(this);
         this.tree3 = new MyTree(this);
         this.tree4 = new MyTree(this);
-        this.trees = new MyTreeGroupPatch(this);
+        this.trees = new MyTreeRowPatch(this);
         this.lightning = new MyLightning(this);
         this.house = new MyHouse(this);
 
