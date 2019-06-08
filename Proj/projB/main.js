@@ -30,6 +30,8 @@ serialInclude(['../lib/CGF.js',
                 'MyPyramid.js',
                 'MyTreeGroupPatch.js',
                 'MyTreeRowPatch.js',
+                'MyNest2.js',
+                'MyNestBranch.js',
 
     main = function () {
         var app = new CGFapplication(document.body);

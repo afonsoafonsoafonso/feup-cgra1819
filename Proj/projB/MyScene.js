@@ -22,9 +22,8 @@ class MyScene extends CGFscene {
         this.setUpdatePeriod(50);
 
         //Initialize scene objects
-        this.bowl = new MyHalfSphere(this,10,10);
         this.axis = new CGFaxis(this);
-        this.nest = new MyNest(this);
+        this.nest = new MyNest2(this);
         this.plane = new MyTerrain(this);
         this.bird = new MyBird(this);
         this.branch = new MyTreeBranch(this);
@@ -226,12 +225,6 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.scale(1.5,1.5,1.5);
         //this.trees.display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.translate(0,3,0);
-        this.scale(1,1,1);
-        //this.bowl.display();
         this.popMatrix();
 
         // back to normal height
