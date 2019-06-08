@@ -11,7 +11,7 @@ class MyNestBranch extends CGFobject {
         this.materialBranch.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialBranch.setSpecular(0.1, 0.1, 0.1, 1);
         this.materialBranch.setShininess(10.0);
-        this.materialBranch.loadTexture('images/branch.jpg');
+        this.materialBranch.loadTexture('images/nest2.jpg');
         this.materialBranch.setTextureWrap('REPEAT', 'REPEAT');
     }
 
