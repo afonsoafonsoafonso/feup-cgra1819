@@ -6,7 +6,6 @@ class MyNest extends CGFobject {
         super(scene);
         this.cube = new MyUnitCubeQuad(scene);
         this.branch = new MyTreeBranch(scene);
-        this.branch = new MyTreeBranch(scene);
         this.branchCounter=0;
 
         this.materialNest = new CGFappearance(scene);
@@ -16,6 +15,10 @@ class MyNest extends CGFobject {
         this.materialNest.setShininess(10.0);
         this.materialNest.loadTexture('images/nest.jpg');
         this.materialNest.setTextureWrap('REPEAT', 'REPEAT');
+    }
+
+    branchDrop() {
+        ++this.branchCounter;   
     }
 
     display() {

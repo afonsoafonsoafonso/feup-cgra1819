@@ -2,6 +2,7 @@ class MyNest2 extends CGFobject {
     constructor(scene) {
         super(scene);
         this.branch = new MyNestBranch(scene); 
+        this.birdBranch = new MyTreeBranch(scene);
         this.base = new MyHalfSphere(scene,30,5);
         
         this.materialNest = new CGFappearance(scene);
@@ -9,7 +10,7 @@ class MyNest2 extends CGFobject {
         this.materialNest.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialNest.setSpecular(0.1, 0.1, 0.1, 1);
         this.materialNest.setShininess(10.0);
-        this.materialNest.loadTexture('images/nest2.jpg');
+        this.materialNest.loadTexture('images/nest3.jpeg');
         this.materialNest.setTextureWrap('REPEAT', 'REPEAT');
     }
 
@@ -53,7 +54,7 @@ class MyNest2 extends CGFobject {
         this.base.display();
         this.scene.popMatrix();
 
-        for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/15) {
+        for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/10) {
             this.scene.pushMatrix();
             this.materialNest.apply();
             this.scene.rotate(i-Math.PI*2/60,0,1,0);
@@ -65,7 +66,7 @@ class MyNest2 extends CGFobject {
         for(var i=0; i<this.branchCounter; i++) {
             this.scene.pushMatrix();
             this.scene.translate(0,i+0.05,0);
-            this.branch.display();
+            this.birdBranch.display();
             this.scene.popMatrix();
         }
     }
