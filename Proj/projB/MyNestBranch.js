@@ -18,7 +18,7 @@ class MyNestBranch extends CGFobject {
     display() {
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI/2, 0, 0, 1);
-        this.scene.scale(0.045, 0.9, 0.045);
+        this.scene.scale(0.015, 0.9, 0.015);
         this.materialBranch.apply();
         this.branch.display();
         this.scene.popMatrix();

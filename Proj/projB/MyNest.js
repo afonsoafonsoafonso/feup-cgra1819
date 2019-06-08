@@ -18,10 +18,6 @@ class MyNest extends CGFobject {
         this.materialNest.setTextureWrap('REPEAT', 'REPEAT');
     }
 
-    branchDrop() {
-        ++this.branchCounter;
-    }
-
     display() {
         this.scene.pushMatrix();
         this.materialNest.apply();
