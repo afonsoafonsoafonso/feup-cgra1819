@@ -54,7 +54,7 @@ class MyNest2 extends CGFobject {
         this.base.display();
         this.scene.popMatrix();
 
-        for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/10) {
+        for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/5) {
             this.scene.pushMatrix();
             this.materialNest.apply();
             this.scene.rotate(i-Math.PI*2/60,0,1,0);
