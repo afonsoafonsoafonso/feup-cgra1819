@@ -157,11 +157,14 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
         //left wing display
         this.scene.pushMatrix();
-        if(!this.dropFlag)
+        if(!this.dropFlag) {
             this.scene.rotate(this.y*Math.PI/4,0,0,-1);
-        else
+            this.scene.translate(0.5,this.y/4.5,0);
+        }
+        else {
             this.scene.rotate(this.y*Math.PI/7,0,0,-1);
-        this.scene.translate(0.5,this.y/4.5,0);
+            this.scene.translate(0.1,this.y/4.5,0);
+        }
         this.scene.scale(1, 1, 0.2);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
         this.scene.rotate(Math.PI/4, 0, 0, 1);
@@ -170,11 +173,14 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
         //right wing display
         this.scene.pushMatrix();
-        if(!this.dropFlag)
+        if(!this.dropFlag) {
             this.scene.rotate(this.y*Math.PI/4,0,0,1);
-        else
+            this.scene.translate(-0.5,this.y/4.5,0);
+        }
+        else {
             this.scene.rotate(this.y*Math.PI/7,0,0,1);
-        this.scene.translate(-0.5,this.y/4.5,0);
+            this.scene.translate(-0.1,this.y/4.5,0);
+        }
         this.scene.scale(1, 1, 0.2);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
         this.scene.rotate(-3*Math.PI/4, 0, 0, 1);
