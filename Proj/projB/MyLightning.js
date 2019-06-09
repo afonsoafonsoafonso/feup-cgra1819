@@ -60,6 +60,8 @@ class MyLightning extends MyLSystem {
         this.scene.pushMatrix();
         this.scene.scale(this.scale, this.scale, this.scale);
 
+        this.scene.setGlobalAmbientLight(1,1,1,1);
+
         var i;
 
         // percorre a cadeia de caracteres
@@ -118,6 +120,7 @@ class MyLightning extends MyLSystem {
                     break;
             }
         }
+        this.scene.setGlobalAmbientLight(0.1,0.1,0.1,1);
         this.scene.popMatrix();
     }
 }
