@@ -5,7 +5,7 @@ class MyNest extends CGFobject {
         this.birdBranch = new MyTreeBranch(scene);
         this.base = new MyHalfSphere(scene,30,5);
         this.int = new MyHalfSphereInv(scene,30,5);
-        this.branchCounter=2;
+        this.branchCounter=3;
         
         this.materialNest = new CGFappearance(scene);
         this.materialNest.setAmbient(0.1, 0.1, 0.1, 1);
@@ -21,33 +21,6 @@ class MyNest extends CGFobject {
     }
 
     display() {
-        /*for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/3) {
-            this.scene.pushMatrix();
-            this.scene.rotate(i-Math.PI*2/60,0,1,0);
-            this.branch.display();
-            this.scene.popMatrix();
-        }
-        for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/3) {
-            this.scene.pushMatrix();
-            this.scene.rotate(i-Math.PI*2/60,0,1,0);
-            this.scene.rotate(Math.PI/4/6,0,0,-1);
-            this.branch.display();
-            this.scene.popMatrix();
-        }
-        for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/3) {
-            this.scene.pushMatrix();
-            this.scene.rotate(i-Math.PI*2/60,0,1,0);
-            this.scene.rotate(Math.PI/4/3.5,0,0,-1);
-            this.branch.display();
-            this.scene.popMatrix();
-        }
-        for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/3 ) {
-            this.scene.pushMatrix();
-            this.scene.rotate(i-Math.PI*2/60,0,1,0);
-            this.scene.rotate(Math.PI/4/2.5,0,0,-1);
-            this.branch.display();
-            this.scene.popMatrix();
-        }*/
         this.scene.pushMatrix();
         this.materialNest.apply();
         this.scene.scale(0.5,0.2,0.5);
@@ -65,15 +38,6 @@ class MyNest extends CGFobject {
         this.int.display();
         this.scene.popMatrix();
 
-        /*for(var i=0; i<Math.PI*2; i+=Math.PI*2/35/5) {
-            this.scene.pushMatrix();
-            this.materialNest.apply();
-            this.scene.rotate(i-Math.PI*2/60,0,1,0);
-            this.scene.rotate(Math.PI/4/1.8,0,0,-1);
-            this.branch.display();
-            this.scene.popMatrix();
-        }*/
-
         for(var i=0; i<this.branchCounter; i++) {
             switch(i) {
                 case 0:
@@ -89,6 +53,15 @@ class MyNest extends CGFobject {
                     this.scene.translate(0,0.04,0.2);
                     this.scene.rotate(-Math.PI/4,0,1,0);
                     this.scene.rotate(-Math.PI/7,0,0,1);
+                    this.scene.scale(0.45,0.45,0.45);
+                    this.birdBranch.display();
+                    this.scene.popMatrix();
+                    break;
+                case 2:
+                    this.scene.pushMatrix();
+                    this.scene.rotate(Math.PI/7.6,0,0,1);
+                    this.scene.rotate(Math.PI/4,0,1,0); 
+                    this.scene.translate(0.55,0.15,-0.15);
                     this.scene.scale(0.45,0.45,0.45);
                     this.birdBranch.display();
                     this.scene.popMatrix();
