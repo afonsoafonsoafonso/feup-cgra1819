@@ -86,8 +86,9 @@ class MyNest extends CGFobject {
                     break;
                 case 1:
                     this.scene.pushMatrix();
-                    //this.scene.rotate(-Math.PI/7,0,0,1);
-                    //this.scene.translate(0,0,0);
+                    this.scene.translate(0,0.04,0.2);
+                    this.scene.rotate(-Math.PI/4,0,1,0);
+                    this.scene.rotate(-Math.PI/7,0,0,1);
                     this.scene.scale(0.45,0.45,0.45);
                     this.birdBranch.display();
                     this.scene.popMatrix();
