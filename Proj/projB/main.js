@@ -31,6 +31,7 @@ serialInclude(['../lib/CGF.js',
                 'MyNest.js',
                 'MyHalfSphere.js',
                 'MyHalfSphereInv.js',
+                'MyLightningBody.js',
 
     main = function () {
         var app = new CGFapplication(document.body);

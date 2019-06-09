@@ -1,5 +1,5 @@
 /**
- * MyHalfSphere
+ * MyHalfSphere with inverted normals
  */
 
 class MyHalfSphereInv extends CGFobject {

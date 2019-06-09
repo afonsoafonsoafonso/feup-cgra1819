@@ -29,8 +29,8 @@ class MyLightning extends MyLSystem {
     }
     initGrammar() {
         this.grammar = {
-            "F": new MyQuad(this.scene),
-            "X": new MyQuad(this.scene)
+            "F": new MyLightningBody(this.scene),
+            "X": new MyLightningBody(this.scene)
         };
     };
 
