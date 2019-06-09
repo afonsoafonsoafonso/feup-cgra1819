@@ -213,7 +213,7 @@ class MyScene extends CGFscene {
         this.translate(0,30,0);
         this.rotate(Math.PI,0,0,1);
         this.scale(3,8,3);
-        this.lightning.display();
+        //this.lightning.display();
         this.popMatrix();
 
         this.pushMatrix();

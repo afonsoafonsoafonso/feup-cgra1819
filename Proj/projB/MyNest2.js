@@ -4,6 +4,7 @@ class MyNest2 extends CGFobject {
         this.branch = new MyNestBranch(scene); 
         this.birdBranch = new MyTreeBranch(scene);
         this.base = new MyHalfSphere(scene,30,5);
+        this.branchCounter=0;
         
         this.materialNest = new CGFappearance(scene);
         this.materialNest.setAmbient(0.1, 0.1, 0.1, 1);
@@ -16,6 +17,8 @@ class MyNest2 extends CGFobject {
 
     branchDrop() {
         ++this.branchCounter;
+        console.log("BRANCH COUNTER:");
+        console.log(this.branchCounter);
     }
 
     display() {
