@@ -5,7 +5,7 @@ class MyNest extends CGFobject {
         this.birdBranch = new MyTreeBranch(scene);
         this.base = new MyHalfSphere(scene,30,5);
         this.int = new MyHalfSphereInv(scene,30,5);
-        this.branchCounter=3;
+        this.branchCounter=0;
         
         this.materialNest = new CGFappearance(scene);
         this.materialNest.setAmbient(0.1, 0.1, 0.1, 1);
@@ -66,12 +66,16 @@ class MyNest extends CGFobject {
                     this.birdBranch.display();
                     this.scene.popMatrix();
                     break;
+                case 3:
+                    this.scene.pushMatrix();
+                    this.scene.rotate(-Math.PI/7,1,0,0);
+                    this.scene.rotate(-Math.PI/4,0,1,0);
+                    this.scene.translate(0.60,0.10,-0.15);
+                    this.scene.scale(0.45, 0.45, 0.45); 
+                    this.birdBranch.display();
+                    this.scene.popMatrix();
+                    break;
             }
-
-            //this.scene.pushMatrix();
-            //this.scene.translate(0,i+0.05,0);
-            //this.birdBranch.display();
-            //this.scene.popMatrix();
         }
     }
 }
