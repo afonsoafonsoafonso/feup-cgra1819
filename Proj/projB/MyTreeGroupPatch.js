@@ -14,7 +14,7 @@ class MyTreeGroupPatch extends CGFobject {
         this.scale_factor = [];
 
         for(var i=0; i<9; i++) {
-            this.disalignment_factor.push(Math.random()*1.2-1);
+            this.disalignment_factor.push(Math.random()*0.1-1);
         }
         
         for(var i=0; i<9; i++) {
@@ -23,6 +23,8 @@ class MyTreeGroupPatch extends CGFobject {
     }
     
     display() {
+        this.scene.pushMatrix();
+        this.scene.scale(1.7,1.7,1.7);
         var t=0;
         for(var i=-9; i<9; i+=6) {
             for(var j=-9; j<9; j+=6) {
@@ -34,5 +36,6 @@ class MyTreeGroupPatch extends CGFobject {
                 t++;
             }
         }
+        this.scene.popMatrix();
     }
 }

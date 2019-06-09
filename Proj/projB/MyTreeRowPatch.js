@@ -23,6 +23,8 @@ class MyTreeRowPatch extends CGFobject {
     }
 
     display() {
+        this.scene.pushMatrix();
+        this.scene.scale(1.7,1.7,1.7);
         var t=0;
         for(var i=-18; i<18; i+=6) {
             this.scene.pushMatrix();
@@ -32,5 +34,6 @@ class MyTreeRowPatch extends CGFobject {
             this.scene.popMatrix();
             t++;
         }
+        this.scene.popMatrix();
     }
 }

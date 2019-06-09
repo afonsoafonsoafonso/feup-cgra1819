@@ -30,11 +30,8 @@ class MyScene extends CGFscene {
         this.branches = [];
         this.branchDisplayFlags = [0, 0, 0, 0];
         this.cubeMap = new MyCubeMap(this);
-        this.tree1 = new MyTree(this);
-        this.tree2 = new MyTree(this);
-        this.tree3 = new MyTree(this);
-        this.tree4 = new MyTree(this);
-        this.trees = new MyTreeRowPatch(this);
+        this.treeRow = new MyTreeRowPatch(this);
+        this.treeGroup = new MyTreeGroupPatch(this);
         this.lightning = new MyLightning(this);
         this.house = new MyHouse(this);
 
@@ -175,14 +172,11 @@ class MyScene extends CGFscene {
         this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
         this.bird.display();
         this.popMatrix();
-        //MyTreeBranch drawing
-        //this.pushMatrix();
-        //this.translate(0,-2.95,0);
         for(var i=0; i<4; i++) {
             if(this.branchDisplayFlags[i]==0) {
                 this.pushMatrix();
                 this.translate(this.branchX[i], 0.05, this.branchZ[i]);
-                //this.rotate(this.branchR[i]);
+                this.rotate(this.branchR[i],0,1,0);
                 this.branches[i].display();
                 this.popMatrix();
             }
@@ -198,6 +192,22 @@ class MyScene extends CGFscene {
         this.rotate(Math.PI,0,0,1);
         this.scale(3,8,3);
         //this.lightning.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(13,0,4);
+        this.treeRow.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.rotate(-Math.PI/4,0,1,0);
+        this.translate(-10,0,-0);
+        this.treeRow.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(-5,0,15);
+        this.treeGroup.display();
         this.popMatrix();
 
         this.pushMatrix();
