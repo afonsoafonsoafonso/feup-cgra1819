@@ -18,7 +18,7 @@ class MyTreeBranch extends CGFobject {
     display() {
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI/2, 0, 0, 1);
-        this.scene.scale(0.08, 0.9, 0.08);
+        this.scene.scale(0.08, 1.3, 0.08);
         this.materialBranch.apply();
         this.branch.display();
         this.scene.popMatrix();

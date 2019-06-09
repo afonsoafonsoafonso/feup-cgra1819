@@ -23,7 +23,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.nest = new MyNest2(this);
+        this.nest = new MyNest(this);
         this.plane = new MyTerrain(this);
         this.bird = new MyBird(this);
         this.branch = new MyTreeBranch(this);
