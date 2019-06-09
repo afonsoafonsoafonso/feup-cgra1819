@@ -14,7 +14,7 @@ class MyTreeGroupPatch extends CGFobject {
         this.scale_factor = [];
 
         for(var i=0; i<9; i++) {
-            this.disalignment_factor.push(Math.random()*0.1-1);
+            this.disalignment_factor.push(Math.random()*0.1 -1);
         }
         
         for(var i=0; i<9; i++) {

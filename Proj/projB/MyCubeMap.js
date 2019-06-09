@@ -14,7 +14,7 @@ class MyCubeMap extends CGFobject {
     this.materialFront.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialFront.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialFront.setShininess(10.0);
-    this.materialFront.loadTexture('tex/front.JPG'); //day
+    this.materialFront.loadTexture('images/front.jpg'); //day
     this.materialFront.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialLeft = new CGFappearance(scene); // left
@@ -22,7 +22,7 @@ class MyCubeMap extends CGFobject {
     this.materialLeft.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialLeft.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialLeft.setShininess(10.0);
-    this.materialLeft.loadTexture('tex/left.JPG'); //day
+    this.materialLeft.loadTexture('images/left.jpg'); //day
     this.materialLeft.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialRight = new CGFappearance(scene); //right
@@ -30,7 +30,7 @@ class MyCubeMap extends CGFobject {
     this.materialRight.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialRight.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialRight.setShininess(10.0);
-    this.materialRight.loadTexture('tex/right.JPG'); //day
+    this.materialRight.loadTexture('images/right.jpg'); //day
     this.materialRight.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialBack = new CGFappearance(scene); //back
@@ -38,7 +38,7 @@ class MyCubeMap extends CGFobject {
     this.materialBack.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialBack.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialBack.setShininess(10.0);
-    this.materialBack.loadTexture('tex/back.JPG'); //day
+    this.materialBack.loadTexture('images/back.jpg'); //day
     this.materialBack.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialUp = new CGFappearance(scene); //up
@@ -46,10 +46,9 @@ class MyCubeMap extends CGFobject {
     this.materialUp.setDiffuse(0.9, 0.9, 0.9, 1);
     this.materialUp.setSpecular(0.1, 0.1, 0.1, 1);
     this.materialUp.setShininess(10.0);
-    this.materialUp.loadTexture('tex/up.JPG'); //day
-    this.materialUp.setTextureWrap('REPEAT', 'REPEAT');
+    this.materialUp.loadTexture('images/up.jpg'); //day
+    this.materialUp.setTextureWrap('REPEAT', 'REPEAT')
     }
-
     display() {
         
         this.scene.pushMatrix();
@@ -90,14 +89,6 @@ class MyCubeMap extends CGFobject {
         this.side.display();
 
          // ---- Top Operations
-        /*
-         this.scene.popMatrix();
-         this.scene.pushMatrix();
-         this.scene.rotate(Math.PI,0,1,1);
-         this.scene.translate(0,0,-0.5);
-         this.materialDown.apply();
-         this.side.display();*/
-        
          this.scene.popMatrix();
          this.scene.pushMatrix();
          this.scene.rotate(Math.PI,0,1,-1);
