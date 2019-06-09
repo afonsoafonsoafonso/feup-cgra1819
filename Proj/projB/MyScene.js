@@ -34,6 +34,7 @@ class MyScene extends CGFscene {
         this.treeGroup = new MyTreeGroupPatch(this);
         this.lightning = new MyLightning(this);
         this.house = new MyHouse(this);
+        this.lightningOn = false;
 
         //this.branchPos[4][4];
         this.branchX = [];
@@ -109,6 +110,10 @@ class MyScene extends CGFscene {
             text += " P "; keysPressed = true;
             this.bird.drop();
         }
+        if (this.gui.isKeyPressed("KeyL")) {
+            text += " L "; keysPressed = true;
+            this.lightningOn= true;
+        }
         if (this.gui.isKeyPressed("KeyM")) {
             console.log("\nBIRD X:");
             console.log(this.bird.x);
@@ -119,8 +124,15 @@ class MyScene extends CGFscene {
             console.log(text);
     }
     update(t) {
+        
         this.checkKeys();
+        if(this.lightningOn){
+            console.log("Tou cá!");
+            this.lightning.startAnimation(t);
+            this.lightningOn = false;
+        }
         this.bird.update(t);
+        this.lightning.update(t);
     }
 
     checkBranchPos(x, z) {
@@ -187,12 +199,7 @@ class MyScene extends CGFscene {
         this.nest.display();
         this.popMatrix();
 
-        this.pushMatrix();
-        this.translate(0,30,0);
-        this.rotate(Math.PI,0,0,1);
-        this.scale(3,8,3);
-        //this.lightning.display();
-        this.popMatrix();
+        
 
         this.pushMatrix();
         this.translate(13,0,4);
@@ -217,11 +224,19 @@ class MyScene extends CGFscene {
         this.house.display();
         this.popMatrix();
 
+        
         // back to normal height
         this.popMatrix();
         
         this.pushMatrix();
         this.cubeMap.display();
+        this.popMatrix();
+        
+        this.pushMatrix();
+        this.translate(0,30,0);
+        this.rotate(Math.PI,0,0,1);
+        this.scale(3,8,3);
+        this.lightning.display();
         this.popMatrix();
         // ---- END Primitive drawing section
     }

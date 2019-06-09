@@ -7,6 +7,8 @@ class MyLightning extends MyLSystem {
         this.angle = 25.0;
         this.iterations = 4;
         this.scaleFactor = 0.5;
+        this.depth = 0;
+        this.startTime = 0;
 
         this.doGenerate = function () {
             this.generate(
@@ -33,23 +35,35 @@ class MyLightning extends MyLSystem {
     };
 
     startAnimation(t){
-        super.iterate();
-
-        this.depth = 0 ;
+        console.log(t);
+        console.log(t-this.startTime);
+        if((t-this.startTime) > 1000){
+            
+            this.startTime=t;
+            
+            this.depth=0;
+            this.axiom='X';
+            super.iterate();
+        }
     }
 
     update(t){
-        this.depth++;
+        if((t-this.startTime) <= 1000){
+            this.depth = ((t-this.startTime)/1000) * this.axiom.length;
+        }else
+        this.depth = 0;
     }
 
     display(){
+        if (this.depth== 0)
+        return;
         this.scene.pushMatrix();
         this.scene.scale(this.scale, this.scale, this.scale);
 
         var i;
 
         // percorre a cadeia de caracteres
-        for (i=0; i<this.axiom.length; ++i){
+        for (i=0; i<this.depth; ++i){
 
             // verifica se sao caracteres especiais
             switch(this.axiom[i]){
