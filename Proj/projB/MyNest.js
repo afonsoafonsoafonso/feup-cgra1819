@@ -12,7 +12,7 @@ class MyNest extends CGFobject {
         this.materialNest.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialNest.setSpecular(0.1, 0.1, 0.1, 1);
         this.materialNest.setShininess(10.0);
-        this.materialNest.loadTexture('images/nest3.jpeg');
+        this.materialNest.loadTexture('images/nest.jpg');
         this.materialNest.setTextureWrap('REPEAT', 'REPEAT');
     }
 
@@ -21,6 +21,9 @@ class MyNest extends CGFobject {
     }
 
     display() {
+        this.scene.pushMatrix();
+        this.scene.scale(2.5,2.5,2.5);
+
         this.scene.pushMatrix();
         this.materialNest.apply();
         this.scene.scale(0.5,0.2,0.5);
@@ -77,5 +80,6 @@ class MyNest extends CGFobject {
                     break;
             }
         }
+        this.scene.popMatrix();
     }
 }

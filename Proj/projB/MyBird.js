@@ -95,8 +95,8 @@ class MyBird extends CGFobject {
         this.speed = 0;
 
         if(this.branchHoldFlag!=0) {
-            if(this.x <= 0.45 && this.x >= -0.45 &&
-               this.z <= 0.45 && this.z >0 -0.45) {
+            if(this.x <= 0.45-5.5 && this.x >= -0.45-5.5 &&
+               this.z <= 0.45+3.5 && this.z >0 -0.45+3.5) {
                    this.scene.nest.branchDrop();
                    this.branchHoldFlag=0;   
                }

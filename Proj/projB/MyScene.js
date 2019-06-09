@@ -189,24 +189,8 @@ class MyScene extends CGFscene {
         }
 
         this.pushMatrix();
-        //this.translate(0.)
-        this.scale(2.5,2.5,2.5); //por esta merda dentro do nest
+        this.translate(-5.5,0,3.5);
         this.nest.display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.scale(2,2,2);
-        this.translate(4,0,0);
-        this.tree1.display();
-
-        this.translate(2,0,0);
-        this.tree2.display();
-
-        this.translate(-1,0,2);
-        this.tree3.display();
-
-        this.translate(2,0,0);
-        this.tree4.display();
         this.popMatrix();
 
         this.pushMatrix();
@@ -217,14 +201,10 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(0,1,6.5);
+        this.scale(1.35,1.35,1.35);
+        this.translate(2,1,5);
         this.rotate(Math.PI/2,0,1,0);
         this.house.display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.scale(1.5,1.5,1.5);
-        //this.trees.display();
         this.popMatrix();
 
         // back to normal height
